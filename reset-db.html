@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Reset Database</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f0f0f0;
+        }
+        .container {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0,0,0,0.2);
+            text-align: center;
+        }
+        button {
+            background: #007bff;
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            font-size: 16px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 20px;
+        }
+        button:hover {
+            background: #0056b3;
+        }
+        #message {
+            margin-top: 15px;
+            padding: 10px;
+            border-radius: 5px;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>🗑️ Veritabanını Sıfırla</h2>
+        <p>Tüm eski veriler silinecek ve sayfa yenilenerek yeni veriler yüklenicek.</p>
+        <button onclick="resetDatabase()">Reset Database</button>
+        <div id="message"></div>
+    </div>
+
+    <script>
+        function resetDatabase() {
+            localStorage.removeItem('somaortaklaryolyardim_db');
+            document.getElementById('message').style.display = 'block';
+            document.getElementById('message').style.backgroundColor = '#d4edda';
+            document.getElementById('message').style.color = '#155724';
+            document.getElementById('message').textContent = '✅ Veritabanı başarıyla sıfırlandı! Sayfa yenileniyor...';
+            setTimeout(() => {
+                window.location.reload();
+            }, 2000);
+        }
+    </script>
+</body>
+</html>

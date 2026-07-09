@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Slider Test</title>
+</head>
+<body>
+    <h1>Slider Test</h1>
+    <div id="output"></div>
+    <script>
+        const STORAGE_KEY = 'somaortaklaryolyardim_db';
+        
+        // LocalStorage helpers
+        const getSliders = () => {
+            try {
+                const data = localStorage.getItem(STORAGE_KEY);
+                if (data) {
+                    const db = JSON.parse(data);
+                    return db.sliders || [];
+                }
+            } catch (error) {
+                console.error('Error loading DB:', error);
+            }
+            return [];
+        };
+        
+        // Test
+        const sliders = getSliders();
+        console.log('Sliders:', sliders);
+        console.log('Active sliders:', sliders.filter(s => s.active));
+        console.log('Sliders length:', sliders.length);
+        console.log('First slider:', sliders[0]);
+        console.log('First slider image:', sliders[0]?.imageUrl);
+    </script>
+</body>
+</html>

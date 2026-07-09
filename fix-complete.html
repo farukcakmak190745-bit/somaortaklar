@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Services Düzeltiliyor</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+        .fix-container {
+            background: white;
+            padding: 50px;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            text-align: center;
+            max-width: 600px;
+        }
+        h1 {
+            color: #333;
+            margin-bottom: 10px;
+        }
+        .spinner {
+            border: 4px solid #f3f3f3;
+            border-top: 4px solid #667eea;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            animation: spin 1s linear infinite;
+            margin: 30px auto;
+        }
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        .success {
+            background: #d4edda;
+            color: #155724;
+            padding: 20px;
+            border-radius: 10px;
+            margin-top: 20px;
+            display: none;
+        }
+        .error {
+            background: #f8d7da;
+            color: #721c24;
+            padding: 20px;
+            border-radius: 10px;
+            margin-top: 20px;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="fix-container">
+        <h1>🔧 Services Düzeltiliyor</h1>
+        <p>Şu an tüm eski veriler silinecek ve 6 yeni hizmet eklenecek...</p>
+
+        <div class="spinner"></div>
+
+        <div id="success" class="success">
+            <h3>✅ İşlem Başarılı!</h3>
+            <p><strong>6 yeni hizmet başarıyla eklendi:</strong></p>
+            <ul style="text-align: left; display: inline-block;">
+                <li>• Soma Oto Çekici</li>
+                <li>• Soma Şehirlerarası Çekici</li>
+                <li>• Soma Kaza Çekici</li>
+                <li>• Soma Akü Takviyesi</li>
+                <li>• Soma Lastik Değişimi</li>
+                <li>• Soma Yakıt İkmali</li>
+            </ul>
+            <p><strong>Sayfa otomatik yenileniyor...</strong></p>
+        </div>
+
+        <div id="error" class="error">
+            <h3>❌ Hata!</h3>
+            <p id="error-message"></p>
+        </div>
+    </div>
+
+    <script>
+        setTimeout(() => {
+            try {
+                // 1. Eski veriyi temizle
+                localStorage.removeItem('somaortaklaryolyardim_db');
+
+                // 2. Yeni 6 hizmet oluştur
+                const services = [
+                    {
+                        id: 1,
+                        title: "Soma Oto Çekici",
+                        icon: "truck",
+                        description: "Soma'da arızalanan veya kazaya karışan aracınız için 7/24 profesyonel oto çekici hizmeti. En kısa sürede olay yerine ulaşıyor, aracınızı hasarsız taşııyoruz.",
+                        area: "Soma · Manisa · Şehir içi",
+                        features: ["7/24 Soma çekici hizmeti", "Hasarsız taşıma garantisi", "Tüm Manisa ilçeleri"]
+                    },
+                    {
+                        id: 2,
+                        title: "Soma Şehirlerarası Çekici",
+                        icon: "truck",
+                        description: "Soma'dan Türkiye'nin her iline güvenli araç taşımacılığı. Şehirlerarası çekici hizmetimizle aracınız sigortalı ve güvence altında taşınır.",
+                        area: "Soma · Tüm Türkiye",
+                        features: ["7/24 hizmet", "Sigortalı taşıma", "Türkiye geneli"]
+                    },
+                    {
+                        id: 3,
+                        title: "Soma Kaza Çekici",
+                        icon: "alert-triangle",
+                        description: "Soma ve Manisa'da trafik kazası geçirdiniz mi? Acil kaza çekici ekibimiz olay yerine en hızlı şekilde ulaşarak aracınızı güvenle taşır.",
+                        area: "Soma · Manisa · Acil",
+                        features: ["Acil müdahale", "7/24 hizmet", "Uzman ekip"]
+                    },
+                    {
+                        id: 4,
+                        title: "Soma Akü Takviyesi",
+                        icon: "battery",
+                        description: "Soma'da aracınızın aküsü mü bitti? Bulunduğunuz yere gelerek yerinde akü takviyesi veya akü değişimi yapıyoruz. Çekiciye gerek kalmadan yola devam edin.",
+                        area: "Soma · Şehir içi · Yol üzeri",
+                        features: ["7/24 hizmet", "Yerinde akü değişimi", "Geliyoruz yanınıza"]
+                    },
+                    {
+                        id: 5,
+                        title: "Soma Lastik Değişimi",
+                        icon: "wrench",
+                        description: "Soma veya Manisa'da yolda lastik mi patlattınız? Yol yardım ekibimiz bulunduğunuz noktaya gelerek lastik değişimini hızla tamamlar.",
+                        area: "Soma · Manisa · Yol üzeri",
+                        features: ["7/24 hizmet", "Yerinde değişim", "Soma ve çevre iller"]
+                    },
+                    {
+                        id: 6,
+                        title: "Soma Yakıt İkmali",
+                        icon: "zap",
+                        description: "Soma'da yakıtınız mı bitti? Yolda mahsur kaldığınızda benzin veya motorin ikmali için ekibimiz kısa sürede yanınızda olur.",
+                        area: "Soma · Manisa · Yol üzeri",
+                        features: ["7/24 hizmet", "Benzin ve motorin", "Geliyoruz yanınıza"]
+                    }
+                ];
+
+                // 3. Tam DB oluştur
+                const db = {
+                    hero: {
+                        title: "Soma Ortaklar Yolyardım Hizmetleri",
+                        subtitle: "24/7 Profesyonel Destek, Güvenilir Çözümler",
+                        ctaButton: "Hemen Ara",
+                        bgImage: "/images/hero-bg.jpg"
+                    },
+                    services: services,
+                    testimonials: [],
+                    gallery: [],
+                    contact: {
+                        phone: "+90 555 123 45 67",
+                        phone2: "+90 555 765 43 21",
+                        email: "info@somaortaklaryolyardim.com",
+                        address: "Somaras Mah. Cadde No: 123, Sakarya",
+                        hours: "24 Saat Hizmet Veriyoruz"
+                    },
+                    footer: {
+                        social: {
+                            instagram: "https://instagram.com",
+                            whatsapp: "https://wa.me/905551234567",
+                            facebook: "https://facebook.com"
+                        },
+                        quickLinks: [
+                            "Hizmetlerimiz",
+                            "Hakkımızda",
+                            "İletişim",
+                            "Blog",
+                            "Kariyer",
+                            "SSS"
+                        ]
+                    },
+                    about: {
+                        title: "Hakkımızda",
+                        description: "Soma Ortaklar Yolyardım olarak 10 yılı aşkın süredir çekici ve yolyardım hizmetleri sunuyoruz"
+                    },
+                    sliders: [],
+                    blogs: [],
+                    seo: {
+                        title: "Çekici & Yolyardım Hizmetleri | Soma Ortaklar",
+                        description: "24/7 profesyonel çekici ve yolyardım hizmetleri. Şehir içi ve şehirlerarası çekici, park çekiği, trafik yardımı.",
+                        keywords: ["çekici", "yolyardım", "park çekiği", "trafik yardımı", "Soma", "Sakarya"],
+                        ogTitle: "Çekici & Yolyardım Hizmetleri",
+                        ogDescription: "24/7 profesyonel çekici ve yolyardım hizmetleri. Hemen arayın!",
+                        ogImage: "/images/og-image.jpg",
+                        twitterCard: "summary_large_image"
+                    },
+                    statistics: {
+                        services: 6,
+                        clients: 1500,
+                        years: 10,
+                        satisfaction: 98,
+                        active: true
+                    },
+                    websiteStatus: {
+                        siteNumber: "SOM-12345",
+                        closed: false
+                    }
+                };
+
+                // 4. Kaydet
+                localStorage.setItem('somaortaklaryolyardim_db', JSON.stringify(db));
+
+                // 5. Görünümü güncelle
+                document.querySelector('.spinner').style.display = 'none';
+                document.getElementById('success').style.display = 'block';
+
+                // 6. Sayfayı yenile
+                setTimeout(() => {
+                    window.location.reload();
+                }, 3000);
+
+            } catch (error) {
+                document.querySelector('.spinner').style.display = 'none';
+                const errorDiv = document.getElementById('error');
+                errorDiv.style.display = 'block';
+                document.getElementById('error-message').textContent = error.message;
+            }
+        }, 1000);
+    </script>
+</body>
+</html>

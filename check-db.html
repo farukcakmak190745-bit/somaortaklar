@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Check Database</title>
+    <style>
+        body {
+            font-family: 'Courier New', monospace;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #1a1a2e;
+            color: #00ff00;
+        }
+        .container {
+            background: #16213e;
+            padding: 30px;
+            border-radius: 10px;
+            border: 1px solid #0f3460;
+            max-width: 800px;
+            overflow-x: auto;
+        }
+        h2 {
+            color: #e94560;
+            margin-top: 0;
+        }
+        pre {
+            white-space: pre-wrap;
+            word-wrap: break-word;
+            line-height: 1.5;
+        }
+        button {
+            background: #0f3460;
+            color: #fff;
+            border: 1px solid #e94560;
+            padding: 10px 20px;
+            font-size: 14px;
+            cursor: pointer;
+            margin-top: 15px;
+        }
+        button:hover {
+            background: #e94560;
+        }
+        #result {
+            margin-top: 20px;
+            padding: 15px;
+            border-radius: 5px;
+            display: none;
+        }
+        #result.error {
+            background: #ff4757;
+            color: white;
+        }
+        #result.success {
+            background: #2ed573;
+            color: white;
+        }
+        #count {
+            font-size: 24px;
+            font-weight: bold;
+            margin-top: 15px;
+            padding: 10px;
+            border-radius: 5px;
+            display: none;
+        }
+        .count-6 {
+            background: #2ed573;
+            color: white;
+        }
+        .count-other {
+            background: #ffa502;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>📊 Veritabanı Kontrolü</h2>
+        <button onclick="checkServices()">Services'leri Göster</button>
+        <button onclick="resetAndReload()" style="background: #e94560; border-color: #ff6b81;">🗑️ Reset ve Yenile</button>
+
+        <div id="result"></div>
+        <div id="count"></div>
+    </div>
+
+    <script>
+        function checkServices() {
+            const db = JSON.parse(localStorage.getItem('somaortaklaryolyardim_db') || '{}');
+            const services = db.services || [];
+
+            console.log('=== SERVICES ===');
+            console.log(JSON.stringify(services, null, 2));
+            console.log('=== TOTAL COUNT ===');
+            console.log('Services:', services.length);
+
+            const resultDiv = document.getElementById('result');
+            const countDiv = document.getElementById('count');
+
+            if (services.length === 0) {
+                resultDiv.style.display = 'block';
+                resultDiv.className = 'error';
+                resultDiv.textContent = '❌ SERVICES ARRAY BOŞ! Veritabanı temizlenmeli.';
+                countDiv.style.display = 'none';
+            } else {
+                resultDiv.style.display = 'block';
+                resultDiv.className = 'success';
+                resultDiv.innerHTML = `<strong>✅ ${services.length} hizmet bulundu:</strong><pre>${JSON.stringify(services, null, 2)}</pre>`;
+
+                countDiv.style.display = 'block';
+                countDiv.textContent = `📈 Toplam Hizmet: ${services.length}`;
+                if (services.length === 6) {
+                    countDiv.className = 'count-6';
+                    resultDiv.innerHTML += '<br><strong>🎉 TEBRİKLER! 6 yeni hizmet yüklendi!</strong>';
+                } else {
+                    countDiv.className = 'count-other';
+                }
+            }
+        }
+
+        function resetAndReload() {
+            localStorage.removeItem('somaortaklaryolyardim_db');
+            alert('✅ Veritabanı temizlendi! Sayfa 3 saniye sonra yenileniyor...');
+            setTimeout(() => {
+                window.location.reload();
+            }, 3000);
+        }
+    </script>
+</body>
+</html>

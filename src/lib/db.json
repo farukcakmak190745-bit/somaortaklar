@@ -1,0 +1,122 @@
+{
+  "hero": {
+    "title": "Soma Ortaklar Yolyardım Hizmetleri",
+    "subtitle": "24/7 Profesyonel Destek, Güvenilir Çözümler",
+    "ctaButton": "Hemen Ara",
+    "bgImage": "/images/hero-bg.jpg"
+  },
+  "services": [
+    {
+      "id": 1,
+      "title": "Park Çekiği",
+      "description": "Yanlış park yapmış olun, trafik kuralları ihlali yapmış olun... Soma Ortaklar Yolyardım olarak 24 saat hizmet veriyoruz!",
+      "icon": "truck",
+      "price": "₺500-1000",
+      "area": "Şehir içi",
+      "image": "/images/services/parking.jpg",
+      "features": ["24 saat hizmet", "Spesiyal araçlar", "Garantili iş"]
+    },
+    {
+      "id": 2,
+      "title": "Trafik Yardımı",
+      "description": "Yolunu kaybetmiş olabilirsiniz, acil bir yardım ihtiyacınız var... Soma Ortaklar Yolyardım olarak yanınızdayız!",
+      "icon": "help-circle",
+      "price": "₺700-1200",
+      "area": "Şehir içi",
+      "image": "/images/services/traffic.jpg",
+      "features": ["Hızlı destek", "Uzman ekip", "Rekor sürede"]
+    },
+    {
+      "id": 3,
+      "title": "Acil Durum",
+      "icon": "alert-triangle",
+      "price": "₺1000-2000",
+      "area": "Şehir içi & Şehirlerarası",
+      "image": "/images/services/emergency.jpg",
+      "features": ["1 dk çekebiliriz", "Uzman pilotlar", "Kapıda"]
+    }
+  ],
+  "testimonials": [
+    {
+      "id": 1,
+      "name": "Ahmet Yılmaz",
+      "text": "Soma Ortaklar Yolyardım ekibi çok profesyonel. Aracımı 15 dakikada yerinde aldırabildim. Kesinlikle tavsiye ederim!",
+      "rating": 5,
+      "image": "/images/testimonials/ahmet.jpg"
+    }
+  ],
+  "sliders": [
+    {
+      "id": 1,
+      "title": "Profesyonel Çekici Ekibimiz",
+      "description": "10 yılı aşkın deneyime sahip, sertifikalı pilotlarımız hazır.",
+      "imageUrl": "https://images.unsplash.com/photo-1601362840469-51e4d8d58785?w=1920&q=80",
+      "order": 1,
+      "active": true
+    },
+    {
+      "id": 2,
+      "title": "Modern Çekici Araçları",
+      "description": "En yeni teknoloji ve güvenli taşıma araçlarımız.",
+      "imageUrl": "https://images.unsplash.com/photo-1541899481282-d53bffe3c35d?w=1920&q=80",
+      "order": 2,
+      "active": true
+    },
+    {
+      "id": 3,
+      "title": "7/24 Hızlı Müdahale",
+      "description": "Acil durumlarda 1 dakika içinde yerinde çekici hizmeti.",
+      "imageUrl": "https://images.unsplash.com/photo-1563986768609-322da13575f3?w=1920&q=80",
+      "order": 3,
+      "active": true
+    },
+    {
+      "id": 4,
+      "title": "Şehir İçi Hizmet",
+      "description": "Tüm Manisa ilçelerine 7/24 profesyonel taşımacılık.",
+      "imageUrl": "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=1920&q=80",
+      "order": 4,
+      "active": true
+    },
+    {
+      "id": 5,
+      "title": "Şehirlerarası Taşımacılık",
+      "description": "Türkiye'nin her iline güvenli ve hızlı taşımacılık.",
+      "imageUrl": "https://images.unsplash.com/photo-1624561172888-ac93c696e10c?w=1920&q=80",
+      "order": 5,
+      "active": true
+    },
+    {
+      "id": 6,
+      "title": "Uzman Pilot Ekip",
+      "description": "En güvenilir ve deneyimli pilotlarımızla hizmetinizdeyiz.",
+      "imageUrl": "https://images.unsplash.com/photo-1519389950473-47ba0277781c?w=1920&q=80",
+      "order": 6,
+      "active": true
+    }
+  ],
+  "contact": {
+    "phone": "+90 555 123 45 67",
+    "phone2": "+90 555 765 43 21",
+    "email": "info@somaortaklaryolyardim.com",
+    "address": "Adres: Somaras Mah. Cadde No: 123, Sakarya",
+    "hours": "24 Saat Hizmet Veriyoruz"
+  },
+  "footer": {
+    "social": {
+      "instagram": "https://instagram.com",
+      "whatsapp": "https://wa.me/905551234567",
+      "facebook": "https://facebook.com"
+    },
+    "quickLinks": [
+      "Hizmetlerimiz",
+      "Hakkımızda",
+      "İletişim",
+      "Blog"
+    ]
+  },
+  "about": {
+    "title": "Hakkımızda",
+    "description": "Soma Ortaklar Yolyardım olarak 24 saat hizmet veriyoruz. Profesyonel ekip ve modern araçlarımızla güvenilir çözümler sunuyoruz."
+  }
+}

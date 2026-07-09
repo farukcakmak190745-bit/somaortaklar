@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Fix Services</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+        .modal {
+            background: white;
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            text-align: center;
+            max-width: 500px;
+        }
+        h1 {
+            color: #333;
+            margin-bottom: 20px;
+        }
+        button {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            padding: 15px 40px;
+            font-size: 18px;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: transform 0.3s, box-shadow 0.3s;
+            margin: 10px;
+        }
+        button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.4);
+        }
+        .success {
+            background: #28a745;
+            color: white;
+            padding: 15px;
+            border-radius: 10px;
+            margin-top: 20px;
+            display: none;
+        }
+        .error {
+            background: #dc3545;
+            color: white;
+            padding: 15px;
+            border-radius: 10px;
+            margin-top: 20px;
+            display: none;
+        }
+        .loading {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="modal">
+        <h1>🔧 Services Düzeltiliyor</h1>
+        <p>Hizmetler bulunamadı veya bozuk. Şimdi düzelteceğim.</p>
+        <button onclick="fixServices()">Services'leri Düzelt</button>
+        <div id="success" class="success"></div>
+        <div id="error" class="error"></div>
+    </div>
+
+    <script>
+        function fixServices() {
+            const successDiv = document.getElementById('success');
+            const errorDiv = document.getElementById('error');
+            successDiv.style.display = 'none';
+            errorDiv.style.display = 'none';
+
+            // 1. Eski veriyi sil
+            localStorage.removeItem('somaortaklaryolyardim_db');
+
+            // 2. Yeni services dizisi
+            const services = [
+                {
+                    id: 1,
+                    title: "Soma Oto Çekici",
+                    icon: "Truck",
+                    description: "Soma'da arızalanan veya kazaya karışan aracınız için 7/24 profesyonel oto çekici hizmeti. En kısa sürede olay yerine ulaşıyor, aracınızı hasarsız taşııyoruz.",
+                    area: "Soma · Manisa · Şehir içi",
+                    features: ["7/24 Soma çekici hizmeti", "Hasarsız taşıma garantisi", "Tüm Manisa ilçeleri"]
+                },
+                {
+                    id: 2,
+                    title: "Soma Şehirlerarası Çekici",
+                    icon: "Truck",
+                    description: "Soma'dan Türkiye'nin her iline güvenli araç taşımacılığı. Şehirlerarası çekici hizmetimizle aracınız sigortalı ve güvence altında taşınır.",
+                    area: "Soma · Tüm Türkiye",
+                    features: ["7/24 hizmet", "Sigortalı taşıma", "Türkiye geneli"]
+                },
+                {
+                    id: 3,
+                    title: "Soma Kaza Çekici",
+                    icon: "AlertTriangle",
+                    description: "Soma ve Manisa'da trafik kazası geçirdiniz mi? Acil kaza çekici ekibimiz olay yerine en hızlı şekilde ulaşarak aracınızı güvenle taşır.",
+                    area: "Soma · Manisa · Acil",
+                    features: ["Acil müdahale", "7/24 hizmet", "Uzman ekip"]
+                },
+                {
+                    id: 4,
+                    title: "Soma Akü Takviyesi",
+                    icon: "Battery",
+                    description: "Soma'da aracınızın aküsü mü bitti? Bulunduğunuz yere gelerek yerinde akü takviyesi veya akü değişimi yapıyoruz. Çekiciye gerek kalmadan yola devam edin.",
+                    area: "Soma · Şehir içi · Yol üzeri",
+                    features: ["7/24 hizmet", "Yerinde akü değişimi", "Geliyoruz yanınıza"]
+                },
+                {
+                    id: 5,
+                    title: "Soma Lastik Değişimi",
+                    icon: "Wrench",
+                    description: "Soma veya Manisa'da yolda lastik mi patlattınız? Yol yardım ekibimiz bulunduğunuz noktaya gelerek lastik değişimini hızla tamamlar.",
+                    area: "Soma · Manisa · Yol üzeri",
+                    features: ["7/24 hizmet", "Yerinde değişim", "Soma ve çevre iller"]
+                },
+                {
+                    id: 6,
+                    title: "Soma Yakıt İkmali",
+                    icon: "Zap",
+                    description: "Soma'da yakıtınız mı bitti? Yolda mahsur kaldığınızda benzin veya motorin ikmali için ekibimiz kısa sürede yanınızda olur.",
+                    area: "Soma · Manisa · Yol üzeri",
+                    features: ["7/24 hizmet", "Benzin ve motorin", "Geliyoruz yanınıza"]
+                }
+            ];
+
+            // 3. DB'yi kaydet
+            const db = {
+                hero: {
+                    title: "Soma Ortaklar Yolyardım Hizmetleri",
+                    subtitle: "24/7 Profesyonel Destek, Güvenilir Çözümler",
+                    ctaButton: "Hemen Ara",
+                    bgImage: "/images/hero-bg.jpg"
+                },
+                services: services,
+                testimonials: [],
+                gallery: [],
+                contact: {
+                    phone: "+90 555 123 45 67",
+                    phone2: "+90 555 765 43 21",
+                    email: "info@somaortaklaryolyardim.com",
+                    address: "Somaras Mah. Cadde No: 123, Sakarya",
+                    hours: "24 Saat Hizmet Veriyoruz"
+                },
+                footer: {
+                    social: {
+                        instagram: "https://instagram.com",
+                        whatsapp: "https://wa.me/905551234567",
+                        facebook: "https://facebook.com"
+                    },
+                    quickLinks: [
+                        "Hizmetlerimiz",
+                        "Hakkımızda",
+                        "İletişim",
+                        "Blog",
+                        "Kariyer",
+                        "SSS"
+                    ]
+                },
+                about: {
+                    title: "Hakkımızda",
+                    description: "Soma Ortaklar Yolyardım olarak 10 yılı aşkın süredir çekici ve yolyardım hizmetleri sunuyoruz"
+                },
+                sliders: [],
+                blogs: [],
+                seo: {
+                    title: "Çekici & Yolyardım Hizmetleri | Soma Ortaklar",
+                    description: "24/7 profesyonel çekici ve yolyardım hizmetleri. Şehir içi ve şehirlerarası çekici, park çekiği, trafik yardımı.",
+                    keywords: ["çekici", "yolyardım", "park çekiği", "trafik yardımı", "Soma", "Sakarya"],
+                    ogTitle: "Çekici & Yolyardım Hizmetleri",
+                    ogDescription: "24/7 profesyonel çekici ve yolyardım hizmetleri. Hemen arayın!",
+                    ogImage: "/images/og-image.jpg",
+                    twitterCard: "summary_large_image"
+                },
+                statistics: {
+                    services: 6,
+                    clients: 1500,
+                    years: 10,
+                    satisfaction: 98,
+                    active: true
+                },
+                websiteStatus: {
+                    siteNumber: "SOM-12345",
+                    closed: false
+                }
+            };
+
+            try {
+                localStorage.setItem('somaortaklaryolyardim_db', JSON.stringify(db));
+
+                successDiv.style.display = 'block';
+                successDiv.innerHTML = `
+                    ✅ <strong>Başarılı!</strong><br><br>
+                    ✓ Services dizesi güncellendi (${services.length} hizmet)<br>
+                    ✓ Veritabanı kaydedildi<br><br>
+                    <strong>Sayfa yenileniyor...</strong>
+                `;
+
+                setTimeout(() => {
+                    window.location.reload();
+                }, 2000);
+            } catch (e) {
+                errorDiv.style.display = 'block';
+                errorDiv.innerHTML = `❌ Hata: ${e.message}`;
+            }
+        }
+    </script>
+</body>
+</html>

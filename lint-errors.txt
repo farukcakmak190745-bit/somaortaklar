@@ -1,0 +1,190 @@
+
+> somaortaklaryolyardim@0.1.0 lint
+> eslint
+
+
+C:\Users\PC\Desktop\somaortaklaryolyardim\src\app\admin\about\page.tsx
+   3:20  warning  'useEffect' is defined but never used          @typescript-eslint/no-unused-vars
+  11:10  warning  'Textarea' is defined but never used           @typescript-eslint/no-unused-vars
+  21:9   warning  'loadData' is assigned a value but never used  @typescript-eslint/no-unused-vars
+
+C:\Users\PC\Desktop\somaortaklaryolyardim\src\app\admin\dashboard\page.tsx
+  160:17  warning  Image elements must have an alt prop, either with meaningful text, or an empty string for decorative images  jsx-a11y/alt-text
+
+C:\Users\PC\Desktop\somaortaklaryolyardim\src\app\admin\footer\page.tsx
+   3:20  warning  'useEffect' is defined but never used          @typescript-eslint/no-unused-vars
+  38:9   warning  'loadData' is assigned a value but never used  @typescript-eslint/no-unused-vars
+
+C:\Users\PC\Desktop\somaortaklaryolyardim\src\app\admin\seo\page.tsx
+    3:20   warning  'useEffect' is defined but never used                            @typescript-eslint/no-unused-vars
+   26:9    warning  'loadData' is assigned a value but never used                    @typescript-eslint/no-unused-vars
+  176:33   error    `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`  react/no-unescaped-entities
+  176:45   error    `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`  react/no-unescaped-entities
+  176:55   error    `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`  react/no-unescaped-entities
+  176:94   error    `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`  react/no-unescaped-entities
+  177:33   error    `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`  react/no-unescaped-entities
+  177:42   error    `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`  react/no-unescaped-entities
+  177:52   error    `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`  react/no-unescaped-entities
+  177:85   error    `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`  react/no-unescaped-entities
+  178:33   error    `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`  react/no-unescaped-entities
+  178:42   error    `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`  react/no-unescaped-entities
+  178:52   error    `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`  react/no-unescaped-entities
+  178:85   error    `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`  react/no-unescaped-entities
+  179:33   error    `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`  react/no-unescaped-entities
+  179:48   error    `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`  react/no-unescaped-entities
+  179:58   error    `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`  react/no-unescaped-entities
+  179:103  error    `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`  react/no-unescaped-entities
+  180:33   error    `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`  react/no-unescaped-entities
+  180:42   error    `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`  react/no-unescaped-entities
+  180:52   error    `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`  react/no-unescaped-entities
+  180:72   error    `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`  react/no-unescaped-entities
+  181:33   error    `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`  react/no-unescaped-entities
+  181:46   error    `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`  react/no-unescaped-entities
+  181:56   error    `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`  react/no-unescaped-entities
+  181:87   error    `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`  react/no-unescaped-entities
+
+C:\Users\PC\Desktop\somaortaklaryolyardim\src\app\admin\services\page.tsx
+  236:96   error  `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`  react/no-unescaped-entities
+  236:113  error  `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`  react/no-unescaped-entities
+
+C:\Users\PC\Desktop\somaortaklaryolyardim\src\app\admin\settings\page.tsx
+   3:20  warning  'useEffect' is defined but never used          @typescript-eslint/no-unused-vars
+  31:9   warning  'loadData' is assigned a value but never used  @typescript-eslint/no-unused-vars
+
+C:\Users\PC\Desktop\somaortaklaryolyardim\src\app\admin\sliders\page.tsx
+    8:41  warning  'CardTitle' is defined but never used                                                                                                                                                                                                                                                    @typescript-eslint/no-unused-vars
+  175:55  error    `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`                                                                                                                                                                                                                          react/no-unescaped-entities
+  175:72  error    `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`                                                                                                                                                                                                                          react/no-unescaped-entities
+  183:19  warning  Using `<img>` could result in slower LCP and higher bandwidth. Consider using `<Image />` from `next/image` or a custom image loader to automatically optimize images. This may incur additional usage or cost from your provider. See: https://nextjs.org/docs/messages/no-img-element  @next/next/no-img-element
+  312:23  warning  Using `<img>` could result in slower LCP and higher bandwidth. Consider using `<Image />` from `next/image` or a custom image loader to automatically optimize images. This may incur additional usage or cost from your provider. See: https://nextjs.org/docs/messages/no-img-element  @next/next/no-img-element
+
+C:\Users\PC\Desktop\somaortaklaryolyardim\src\app\admin\testimonials\page.tsx
+   37:5   error  Error: Cannot access variable before it is declared
+
+`loadTestimonials` is accessed before it is declared, which prevents the earlier access from updating when this value changes over time.
+
+C:\Users\PC\Desktop\somaortaklaryolyardim\src\app\admin\testimonials\page.tsx:37:5
+  35 |
+  36 |   useEffect(() => {
+> 37 |     loadTestimonials();
+     |     ^^^^^^^^^^^^^^^^ `loadTestimonials` accessed before it is declared
+  38 |   }, []);
+  39 |
+  40 |   const loadTestimonials = async () => {
+
+C:\Users\PC\Desktop\somaortaklaryolyardim\src\app\admin\testimonials\page.tsx:40:3
+  38 |   }, []);
+  39 |
+> 40 |   const loadTestimonials = async () => {
+     |   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 41 |     setLoading(true);
+     | ^^^^^^^^^^^^^^^^^^^^^
+> 42 |     try {
+     …
+     | ^^^^^^^^^^^^^^^^^^^^^
+> 49 |     }
+     | ^^^^^^^^^^^^^^^^^^^^^
+> 50 |   };
+     | ^^^^^ `loadTestimonials` is declared here
+  51 |
+  52 |   const openAddDialog = () => {
+  53 |     setEditingTestimonial(null);  react-hooks/immutability
+  183:79  error  `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   react/no-unescaped-entities
+  183:98  error  `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   react/no-unescaped-entities
+  210:19  error  `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   react/no-unescaped-entities
+  210:38  error  `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   react/no-unescaped-entities
+  260:27  error  `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   react/no-unescaped-entities
+  260:46  error  `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   react/no-unescaped-entities
+
+C:\Users\PC\Desktop\somaortaklaryolyardim\src\app\admin\website-status\page.tsx
+   3:20  warning  'useEffect' is defined but never used          @typescript-eslint/no-unused-vars
+  21:9   warning  'loadData' is assigned a value but never used  @typescript-eslint/no-unused-vars
+
+C:\Users\PC\Desktop\somaortaklaryolyardim\src\components\sections\About.tsx
+  46:54  error  `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`  react/no-unescaped-entities
+  53:55  error  `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`  react/no-unescaped-entities
+
+C:\Users\PC\Desktop\somaortaklaryolyardim\src\components\sections\Footer.tsx
+  14:10  warning  'contact' is assigned a value but never used                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            @typescript-eslint/no-unused-vars
+  18:7   error    Error: Calling setState synchronously within an effect can trigger cascading renders
+
+Effects are intended to synchronize state between React and external systems such as manually updating the DOM, state management libraries, or other platform APIs. In general, the body of an effect should do one or both of the following:
+* Update external systems with the latest state from React.
+* Subscribe for updates from some external system, calling setState in a callback function when external state changes.
+
+Calling setState synchronously within an effect body causes cascading renders that can hurt performance, and is not recommended. (https://react.dev/learn/you-might-not-need-an-effect).
+
+C:\Users\PC\Desktop\somaortaklaryolyardim\src\components\sections\Footer.tsx:18:7
+  16 |   useEffect(() => {
+  17 |     if (typeof window !== 'undefined') {
+> 18 |       setIsAuthenticated(localStorage.getItem('adminAuth') === 'true');
+     |       ^^^^^^^^^^^^^^^^^^ Avoid calling setState() directly within an effect
+  19 |     }
+  20 |     setFooter(getFooter());
+  21 |     setContact(getContact());  react-hooks/set-state-in-effect
+
+C:\Users\PC\Desktop\somaortaklaryolyardim\src\components\sections\Hero.tsx
+   3:31  warning  'useRef' is defined but never used                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   @typescript-eslint/no-unused-vars
+  11:16  warning  'setHero' is assigned a value but never used                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         @typescript-eslint/no-unused-vars
+  29:6   warning  React Hook useEffect has a missing dependency: 'sliders'. Either include it or remove the dependency array                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           react-hooks/exhaustive-deps
+  33:5   error    Error: Calling setState synchronously within an effect can trigger cascading renders
+
+Effects are intended to synchronize state between React and external systems such as manually updating the DOM, state management libraries, or other platform APIs. In general, the body of an effect should do one or both of the following:
+* Update external systems with the latest state from React.
+* Subscribe for updates from some external system, calling setState in a callback function when external state changes.
+
+Calling setState synchronously within an effect body causes cascading renders that can hurt performance, and is not recommended. (https://react.dev/learn/you-might-not-need-an-effect).
+
+C:\Users\PC\Desktop\somaortaklaryolyardim\src\components\sections\Hero.tsx:33:5
+  31 |   // Prevent hydration mismatch
+  32 |   useEffect(() => {
+> 33 |     setMounted(true);
+     |     ^^^^^^^^^^ Avoid calling setState() directly within an effect
+  34 |   }, []);
+  35 |
+  36 |   // Load sliders on mount                 react-hooks/set-state-in-effect
+  40:5   error    Error: Calling setState synchronously within an effect can trigger cascading renders
+
+Effects are intended to synchronize state between React and external systems such as manually updating the DOM, state management libraries, or other platform APIs. In general, the body of an effect should do one or both of the following:
+* Update external systems with the latest state from React.
+* Subscribe for updates from some external system, calling setState in a callback function when external state changes.
+
+Calling setState synchronously within an effect body causes cascading renders that can hurt performance, and is not recommended. (https://react.dev/learn/you-might-not-need-an-effect).
+
+C:\Users\PC\Desktop\somaortaklaryolyardim\src\components\sections\Hero.tsx:40:5
+  38 |     if (!mounted) return;
+  39 |     const sliders = getSliders();
+> 40 |     setSliders(sliders);
+     |     ^^^^^^^^^^ Avoid calling setState() directly within an effect
+  41 |     setCurrentIndex(0);
+  42 |   }, [mounted]);
+  43 |  react-hooks/set-state-in-effect
+
+C:\Users\PC\Desktop\somaortaklaryolyardim\src\components\sections\Services.tsx
+  14:5   error  Error: Calling setState synchronously within an effect can trigger cascading renders
+
+Effects are intended to synchronize state between React and external systems such as manually updating the DOM, state management libraries, or other platform APIs. In general, the body of an effect should do one or both of the following:
+* Update external systems with the latest state from React.
+* Subscribe for updates from some external system, calling setState in a callback function when external state changes.
+
+Calling setState synchronously within an effect body causes cascading renders that can hurt performance, and is not recommended. (https://react.dev/learn/you-might-not-need-an-effect).
+
+C:\Users\PC\Desktop\somaortaklaryolyardim\src\components\sections\Services.tsx:14:5
+  12 |
+  13 |   useEffect(() => {
+> 14 |     setMounted(true);
+     |     ^^^^^^^^^^ Avoid calling setState() directly within an effect
+  15 |     setServices(getServices());
+  16 |     setContact(getContact());
+  17 |   }, []);  react-hooks/set-state-in-effect
+  44:18  error  Unexpected any. Specify a different type                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     @typescript-eslint/no-explicit-any
+
+C:\Users\PC\Desktop\somaortaklaryolyardim\src\lib\db-local.ts
+  1:41  warning  'AboutSection' is defined but never used  @typescript-eslint/no-unused-vars
+  1:63  warning  'Blog' is defined but never used          @typescript-eslint/no-unused-vars
+
+C:\Users\PC\Desktop\somaortaklaryolyardim\tailwind.config.ts
+  100:13  error  A `require()` style import is forbidden  @typescript-eslint/no-require-imports
+
+✖ 64 problems (43 errors, 21 warnings)
+

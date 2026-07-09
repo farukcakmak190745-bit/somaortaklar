@@ -1,0 +1,62 @@
+
+> somaortaklaryolyardim@0.1.0 lint
+> eslint
+
+
+C:\Users\PC\Desktop\somaortaklaryolyardim\src\app\admin\about\page.tsx
+   3:20  warning  'useEffect' is defined but never used          @typescript-eslint/no-unused-vars
+  11:10  warning  'Textarea' is defined but never used           @typescript-eslint/no-unused-vars
+  21:9   warning  'loadData' is assigned a value but never used  @typescript-eslint/no-unused-vars
+
+C:\Users\PC\Desktop\somaortaklaryolyardim\src\app\admin\dashboard\page.tsx
+  160:17  warning  Image elements must have an alt prop, either with meaningful text, or an empty string for decorative images  jsx-a11y/alt-text
+
+C:\Users\PC\Desktop\somaortaklaryolyardim\src\app\admin\footer\page.tsx
+   3:20  warning  'useEffect' is defined but never used          @typescript-eslint/no-unused-vars
+  38:9   warning  'loadData' is assigned a value but never used  @typescript-eslint/no-unused-vars
+
+C:\Users\PC\Desktop\somaortaklaryolyardim\src\app\admin\seo\page.tsx
+    3:20  warning  'useEffect' is defined but never used                            @typescript-eslint/no-unused-vars
+   26:9   warning  'loadData' is assigned a value but never used                    @typescript-eslint/no-unused-vars
+  176:33  error    `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`  react/no-unescaped-entities
+  176:45  error    `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`  react/no-unescaped-entities
+  177:33  error    `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`  react/no-unescaped-entities
+  177:42  error    `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`  react/no-unescaped-entities
+  178:33  error    `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`  react/no-unescaped-entities
+  178:42  error    `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`  react/no-unescaped-entities
+  179:33  error    `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`  react/no-unescaped-entities
+  179:48  error    `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`  react/no-unescaped-entities
+  180:33  error    `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`  react/no-unescaped-entities
+  180:42  error    `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`  react/no-unescaped-entities
+  181:33  error    `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`  react/no-unescaped-entities
+  181:46  error    `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`  react/no-unescaped-entities
+
+C:\Users\PC\Desktop\somaortaklaryolyardim\src\app\admin\settings\page.tsx
+   3:20  warning  'useEffect' is defined but never used          @typescript-eslint/no-unused-vars
+  31:9   warning  'loadData' is assigned a value but never used  @typescript-eslint/no-unused-vars
+
+C:\Users\PC\Desktop\somaortaklaryolyardim\src\app\admin\sliders\page.tsx
+    8:41  warning  'CardTitle' is defined but never used                                                                                                                                                                                                                                                    @typescript-eslint/no-unused-vars
+  183:19  warning  Using `<img>` could result in slower LCP and higher bandwidth. Consider using `<Image />` from `next/image` or a custom image loader to automatically optimize images. This may incur additional usage or cost from your provider. See: https://nextjs.org/docs/messages/no-img-element  @next/next/no-img-element
+  312:23  warning  Using `<img>` could result in slower LCP and higher bandwidth. Consider using `<Image />` from `next/image` or a custom image loader to automatically optimize images. This may incur additional usage or cost from your provider. See: https://nextjs.org/docs/messages/no-img-element  @next/next/no-img-element
+
+C:\Users\PC\Desktop\somaortaklaryolyardim\src\app\admin\testimonials\page.tsx
+  3:20  warning  'useEffect' is defined but never used  @typescript-eslint/no-unused-vars
+
+C:\Users\PC\Desktop\somaortaklaryolyardim\src\app\admin\website-status\page.tsx
+   3:20  warning  'useEffect' is defined but never used          @typescript-eslint/no-unused-vars
+  21:9   warning  'loadData' is assigned a value but never used  @typescript-eslint/no-unused-vars
+
+C:\Users\PC\Desktop\somaortaklaryolyardim\src\components\sections\Footer.tsx
+  14:10  warning  'contact' is assigned a value but never used  @typescript-eslint/no-unused-vars
+
+C:\Users\PC\Desktop\somaortaklaryolyardim\src\components\sections\Hero.tsx
+  11:16  warning  'setHero' is assigned a value but never used                                                                @typescript-eslint/no-unused-vars
+  29:6   warning  React Hook useEffect has a missing dependency: 'sliders'. Either include it or remove the dependency array  react-hooks/exhaustive-deps
+
+C:\Users\PC\Desktop\somaortaklaryolyardim\src\lib\db-local.ts
+  1:41  warning  'AboutSection' is defined but never used  @typescript-eslint/no-unused-vars
+  1:63  warning  'Blog' is defined but never used          @typescript-eslint/no-unused-vars
+
+✖ 33 problems (12 errors, 21 warnings)
+
