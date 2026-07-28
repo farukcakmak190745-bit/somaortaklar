@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { useRouter } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
@@ -11,6 +11,7 @@ import { useAdminAuth } from "@/hooks/use-admin-auth";
 
 export default function LoginPage() {
   const router = useRouter();
+  const searchParams = useSearchParams();
   const { login, isAuthenticated } = useAdminAuth();
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
@@ -24,6 +25,14 @@ export default function LoginPage() {
     }
   }, [isAuthenticated, router]);
 
+  useEffect(() => {
+    // Redirect from callback URLs
+    const callbackUrl = searchParams.get("callbackUrl");
+    if (callbackUrl) {
+      localStorage.setItem("adminCallbackUrl", callbackUrl);
+    }
+  }, [searchParams]);
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setError("");
@@ -33,7 +42,9 @@ export default function LoginPage() {
     if (success) {
       toast.success("Giriş başarılı!");
       setTimeout(() => {
-        router.push("/admin/dashboard");
+        const callbackUrl = localStorage.getItem("adminCallbackUrl");
+        localStorage.removeItem("adminCallbackUrl");
+        router.push(callbackUrl || "/admin/dashboard");
       }, 500);
       // Don't reset loading, let the page transition handle it
     } else {

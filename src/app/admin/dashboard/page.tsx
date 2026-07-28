@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { useRouter } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Phone, Truck, CheckCircle, ArrowUpRight, Users, RefreshCw, Image as ImageIcon, LogOut } from "lucide-react";
@@ -11,6 +11,7 @@ import { toast } from "sonner";
 
 export default function DashboardPage() {
   const router = useRouter();
+  const searchParams = useSearchParams();
   const [stats, setStats] = useState({ totalServices: 0, totalTestimonials: 0, totalSliders: 0 });
   const [loading, setLoading] = useState(true);
   const [refreshing, setRefreshing] = useState(false);
