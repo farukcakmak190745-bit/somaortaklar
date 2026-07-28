@@ -1,11 +1,6 @@
 "use client";
 
 import { useState, useEffect } from "react";
-
-type AboutData = {
-  title?: string;
-  description?: string;
-};
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
@@ -13,6 +8,11 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Save } from "lucide-react";
 import { getAbout, updateAbout } from "@/lib/db-local";
 import { toast } from "sonner";
+
+type AboutData = {
+  title?: string;
+  description?: string;
+};
 
 export default function AboutPage() {
   const [about, setAbout] = useState<AboutData | null>(null);
@@ -36,11 +36,9 @@ export default function AboutPage() {
     }
   };
 
-  // Initial load
   useEffect(() => {
     loadData();
   }, []);
-
 
   const handleSave = async () => {
     if (!about) return;

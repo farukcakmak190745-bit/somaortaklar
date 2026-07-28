@@ -6,10 +6,7 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { CheckCircle, Save, Copy, Phone, Info } from "lucide-react";
-import {
-  getContact,
-  updateContact
-} from "@/lib/db-local";
+import { getContact, updateContact } from "@/lib/db-local";
 import type { ContactInfo } from "@/types";
 import { toast } from "sonner";
 
@@ -36,7 +33,6 @@ export default function ContactPage() {
     }
   };
 
-  // Initial load
   useEffect(() => {
     loadContact();
   }, []);
