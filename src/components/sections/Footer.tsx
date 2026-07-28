@@ -11,17 +11,15 @@ export default function Footer() {
   const router = useRouter();
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [footer, setFooter] = useState<ReturnType<typeof getFooter>>({ social: { instagram: "", whatsapp: "", facebook: "" }, quickLinks: [], contactInfo: undefined });
-  const [contact, setContact] = useState<ReturnType<typeof getContact>>({ phone: "", phone2: "", email: "", address: "", hours: "" });
-  const [loaded, setLoaded] = useState(false);
+
 
   useEffect(() => {
     const loadInitialData = async () => {
       if (typeof window !== 'undefined') {
         setIsAuthenticated(localStorage.getItem('adminAuth') === 'true');
       }
+
       setFooter(getFooter());
-      setContact(getContact());
-      setLoaded(true);
     };
     loadInitialData();
   }, []);

@@ -37,6 +37,7 @@ export default function TestimonialsPage() {
     setLoading(true);
     try {
       const data = await getTestimonials();
+      await Promise.resolve();
       setTestimonials(data);
     } catch (error) {
       console.error("Error loading testimonials:", error);

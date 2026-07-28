@@ -78,6 +78,10 @@ export default function SettingsPage() {
     }
   };
 
+  useEffect(() => {
+    loadData();
+  }, []);
+
   const handleSaveHero = async () => {
     setSaving(true);
     try {
@@ -224,11 +228,11 @@ export default function SettingsPage() {
                     Instagram Link
                   </label>
                   <Input
-                    value={footer.social.instagram}
+                    value={footer.social?.instagram || ""}
                     onChange={(e) =>
                       setFooter({
                         ...footer,
-                        social: { ...footer.social, instagram: e.target.value }
+                        social: { ...(footer.social || {}), instagram: e.target.value }
                       })
                     }
                     placeholder="https://instagram.com/..."
@@ -239,11 +243,11 @@ export default function SettingsPage() {
                     WhatsApp Link
                   </label>
                   <Input
-                    value={footer.social.whatsapp}
+                    value={footer.social?.whatsapp || ""}
                     onChange={(e) =>
                       setFooter({
                         ...footer,
-                        social: { ...footer.social, whatsapp: e.target.value }
+                        social: { ...(footer.social || {}), whatsapp: e.target.value }
                       })
                     }
                     placeholder="https://wa.me/..."
@@ -254,11 +258,11 @@ export default function SettingsPage() {
                     Facebook Link
                   </label>
                   <Input
-                    value={footer.social.facebook}
+                    value={footer.social?.facebook || ""}
                     onChange={(e) =>
                       setFooter({
                         ...footer,
-                        social: { ...footer.social, facebook: e.target.value }
+                        social: { ...(footer.social || {}), facebook: e.target.value }
                       })
                     }
                     placeholder="https://facebook.com/..."
@@ -310,10 +314,7 @@ export default function SettingsPage() {
           <div className="flex items-start space-x-4">
             <CheckCircle className="w-8 h-8 text-blue-600 flex-shrink-0 mt-1" />
             <div>
-              <h3 className="text-lg font-semibold text-blue-900 mb-2">İletişim Bilgileri</h3>
-              <p className="text-blue-800">
-                <strong>Admin Girişi:</strong> admin / admin
-              </p>
+              <h3 className="text-lg font-semibold text-blue-900 mb-2">Bilgi</h3>
               <p className="text-blue-800 mt-2">
                 Tüm değişiklikleri kaydet butonuna tıklayarak güncelleyin.
                 Değişiklikler hemen siteye yansır.

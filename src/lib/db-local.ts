@@ -1,4 +1,4 @@
-import type { DB, Service, Testimonial, AboutSection, Slider, Blog, SEOConfig, Statistics, WebsiteStatus } from '../types';
+import type { DB, Service, Testimonial, Slider, SEOConfig, Statistics, WebsiteStatus } from '../types';
 
 const defaultDB: DB = {
   hero: {
@@ -294,8 +294,6 @@ function toTitleCase(text: string): string {
 // LocalStorage helpers
 const STORAGE_KEY = 'somaortaklaryolyardim_db';
 
-console.log('STORAGE_KEY:', STORAGE_KEY);
-
 // Get all data from localStorage (client-side only)
 export function getDB(): DB {
   // Only use localStorage in browser environment
@@ -324,7 +322,6 @@ export function saveDB(db: DB): void {
 // Get hero section
 export function getHero(): DB['hero'] {
   const db = getDB();
-  console.log('getHero called, db.hero:', db.hero);
   return db.hero || {
     title: "Soma Ortaklar Yolyardım Hizmetleri",
     subtitle: "24/7 Profesyonel Destek, Güvenilir Çözümler",
@@ -359,7 +356,7 @@ export function getService(id: number): DB['services'][0] | undefined {
 // Create new service
 export function createService(service: Omit<Service, 'id'>): number {
   const db = getDB();
-  const newId = Math.max(...db.services.map(s => s.id), 0) + 1;
+  const newId = db.services.reduce((max, s) => Math.max(max, s.id), 0) + 1;
   const newService: Service = {
     ...service,
     id: newId,
@@ -408,7 +405,7 @@ export function getTestimonial(id: number): DB['testimonials'][0] | undefined {
 // Create new testimonial
 export function createTestimonial(testimonial: Omit<Testimonial, 'id'>): number {
   const db = getDB();
-  const newId = Math.max(...db.testimonials.map(t => t.id), 0) + 1;
+  const newId = db.testimonials.reduce((max, t) => Math.max(max, t.id), 0) + 1;
   const newTestimonial: Testimonial = { ...testimonial, id: newId };
   db.testimonials.push(newTestimonial);
   saveDB(db);
@@ -470,7 +467,6 @@ export function updateAbout(data: Partial<DB['about']>): void {
 // Get footer info
 export function getFooter(): DB['footer'] {
   const db = getDB();
-  console.log('getFooter called, db.footer:', db.footer);
   return db.footer || {
     social: {
       instagram: "",
@@ -488,11 +484,18 @@ export function updateFooter(data: Partial<DB['footer']>): void {
   saveDB(db);
 }
 
-// Get all sliders
+// Get all sliders (active only, for frontend)
 export function getSliders(): DB['sliders'] {
   const db = getDB();
   const sliders = db.sliders || [];
   return sliders.filter(s => s.active).sort((a, b) => a.order - b.order);
+}
+
+// Get all sliders including inactive ones (for admin panel)
+export function getAllSliders(): DB['sliders'] {
+  const db = getDB();
+  const sliders = db.sliders || [];
+  return sliders.sort((a, b) => a.order - b.order);
 }
 
 // Get single slider by ID
@@ -503,7 +506,7 @@ export function getSlider(id: number): DB['sliders'][0] | undefined {
 // Create new slider
 export function createSlider(slider: Omit<Slider, 'id'>): number {
   const db = getDB();
-  const newId = Math.max(...db.sliders.map(s => s.id), 0) + 1;
+  const newId = db.sliders.reduce((max, s) => Math.max(max, s.id), 0) + 1;
   const newSlider: Slider = { ...slider, id: newId };
   db.sliders.push(newSlider);
   saveDB(db);
@@ -530,7 +533,6 @@ export function deleteSlider(id: number): void {
 // Get SEO config
 export function getSEO(): DB['seo'] {
   const db = getDB();
-  console.log('getSEO called, db.seo:', db.seo);
   return db.seo || {
     title: "Soma Ortaklar Yol Yardım",
     description: "Soma ortaklar için yol yardım hizmetleri",
@@ -570,6 +572,13 @@ export function getWebsiteStatus(): WebsiteStatus {
     closed: false,
     closedReason: ""
   };
+}
+
+// Update website status
+export function updateWebsiteStatus(data: Partial<WebsiteStatus>): void {
+  const db = getDB();
+  db.websiteStatus = { ...db.websiteStatus, ...data };
+  saveDB(db);
 }
 
 // Reset database to default values

@@ -35,6 +35,10 @@ export default function FooterPage() {
   const [loading, setLoading] = useState(true);
   const [saving, setSaving] = useState(false);
 
+  useEffect(() => {
+    loadData();
+  }, []);
+
   const loadData = async () => {
     setLoading(true);
     try {
@@ -260,7 +264,7 @@ export default function FooterPage() {
                   if (!footer) return;
                   setFooter({
                     ...footer,
-                    contactInfo: e.target.checked ? footer.contactInfo : undefined
+                    contactInfo: e.target.checked ? (footer.contactInfo || {}) : undefined
                   });
                 }}
                 className="w-5 h-5 rounded border-gray-300 text-navy-600 focus:ring-navy-500"

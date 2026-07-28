@@ -19,17 +19,11 @@ export default function AboutPage() {
   const [loading, setLoading] = useState(true);
 
   const loadData = async () => {
-    setLoading(true);
     try {
-      console.log('loadData called');
       const data = getAbout();
-      console.log('About Data from getAbout():', data);
       if (data) {
-        console.log('Setting About state:', data);
         setAbout(data);
       } else {
-        console.error('About data is null');
-        // Set default values
         setAbout({
           title: 'Hakkımızda',
           description: 'Hakkımızda bilgisi...'
@@ -41,6 +35,12 @@ export default function AboutPage() {
       setLoading(false);
     }
   };
+
+  // Initial load
+  useEffect(() => {
+    loadData();
+  }, []);
+
 
   const handleSave = async () => {
     if (!about) return;
@@ -87,11 +87,10 @@ export default function AboutPage() {
             </div>
             <div>
               <label className="block text-sm font-medium text-gray-700 mb-2">Açıklama</label>
-              <textarea
+              <Textarea
                 value={about?.description || ""}
                 onChange={(e) => setAbout(about ? { ...about, description: e.target.value } : null)}
                 rows={5}
-                className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-navy-500"
                 placeholder="Hakkımızda açıklaması..."
               />
             </div>

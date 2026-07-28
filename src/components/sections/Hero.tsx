@@ -47,7 +47,7 @@ export default function Hero() {
         hasActiveSliders: sliders.some(s => s.active)
       });
     }
-  }, [mounted, sliders.length, currentIndex, currentSlider.imageUrl]);
+  }, [mounted, sliders, currentIndex, currentSlider.imageUrl]);
 
   // Auto slide
   useEffect(() => {
@@ -58,30 +58,21 @@ export default function Hero() {
     }, 5000);
 
     return () => clearInterval(interval);
-  }, [mounted, sliders.length]);
+  }, [mounted, sliders]);
 
-  useEffect(() => {
-    if (!mounted || sliders.length === 0) return;
 
-    // Auto slide every 5 seconds
-    const interval = setInterval(() => {
-      setCurrentIndex((prevIndex) => (prevIndex + 1) % sliders.length);
-    }, 5000);
-
-    return () => clearInterval(interval);
-  }, [mounted, sliders.length]);
 
   if (!mounted) {
     // Return server-side rendered HTML for initial hydration
     return (
       <section id="home" className="relative min-h-screen flex items-center justify-center overflow-hidden">
-        <div
-          className="absolute inset-0 bg-cover bg-center"
-          style={{
-            backgroundImage: 'url("https://images.unsplash.com/photo-1621922688158-5092bdb99b12?w=1920&q=80")',
-          }}
-        >
-          <div className="absolute inset-0 bg-gradient-to-br from-blue-900/90 via-navy-900/85 to-blue-900/90" />
+        <div className="absolute inset-0">
+          <img 
+            src="https://images.unsplash.com/photo-1621922688158-5092bdb99b12?w=1920&q=80"
+            alt="Soma Çekici Yol Yardım"
+            className="w-full h-full object-cover object-center"
+          />
+          <div className="absolute inset-0 bg-gradient-to-br from-blue-900/70 via-navy-900/60 to-blue-900/70" />
         </div>
 
         <div className="relative z-10 container mx-auto px-4 md:px-6 text-center">
@@ -148,16 +139,15 @@ export default function Hero() {
   return (
     <section id="home" className="relative min-h-screen flex items-center justify-center overflow-hidden">
       {/* Banner Background Image with Slide Effect */}
-      <div
-        className="absolute inset-0 bg-cover bg-center transition-opacity duration-1000"
-        style={{
-          backgroundImage: currentSlider?.imageUrl
-            ? `url(${currentSlider.imageUrl})`
-            : 'url("https://images.unsplash.com/photo-1621922688158-5092bdb99b12?w=1920&q=80")',
-        }}
-      >
+      <div className="absolute inset-0 transition-opacity duration-1000">
+        <img
+          key={currentSlider?.imageUrl}
+          src={currentSlider?.imageUrl || "https://images.unsplash.com/photo-1621922688158-5092bdb99b12?w=1920&q=80"}
+          alt={hero.title || "Soma Çekici"}
+          className="w-full h-full object-cover object-center"
+        />
         {/* Dark Overlay */}
-        <div className="absolute inset-0 bg-gradient-to-br from-blue-900/90 via-navy-900/85 to-blue-900/90" />
+        <div className="absolute inset-0 bg-gradient-to-br from-blue-900/70 via-navy-900/60 to-blue-900/70" />
       </div>
 
       {/* Content */}

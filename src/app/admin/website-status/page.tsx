@@ -4,8 +4,8 @@ import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
-import { Save } from "lucide-react";
-import { getWebsiteStatus } from "@/lib/db-local";
+import { Save, Lock, Unlock } from "lucide-react";
+import { getWebsiteStatus, updateWebsiteStatus } from "@/lib/db-local";
 import { toast } from "sonner";
 
 type WebsiteStatus = {
@@ -25,10 +25,8 @@ export default function WebsiteStatusPage() {
       const data = getWebsiteStatus();
       console.log('Website Status Data from getWebsiteStatus():', data);
       if (data) {
-        console.log('Setting Website Status state:', data);
         setStatus(data);
       } else {
-        console.error('Website Status data is null');
         // Set default values
         setStatus({
           siteNumber: '',
@@ -43,9 +41,15 @@ export default function WebsiteStatusPage() {
     }
   };
 
+  useEffect(() => {
+    loadData();
+  }, []);
+
   const handleSave = async () => {
     try {
-      // updateWebsiteStatus(status);
+      if (status) {
+        updateWebsiteStatus(status);
+      }
       toast.success("Web sitesi durumu güncellendi!");
     } catch (error) {
       console.error("Error saving website status:", error);
@@ -98,9 +102,9 @@ export default function WebsiteStatusPage() {
             <div className="flex items-center justify-between p-4 bg-red-50 rounded-lg">
               <div className="flex items-center space-x-2">
                 {status?.closed ? (
-                  <Save className="w-5 h-5 text-red-600" />
+                  <Lock className="w-5 h-5 text-red-600" />
                 ) : (
-                  <Save className="w-5 h-5 text-green-600" />
+                  <Unlock className="w-5 h-5 text-green-600" />
                 )}
                 <span className="font-medium text-gray-900">
                   {status?.closed ? "Site Kilitli" : "Site Açık"}
@@ -111,7 +115,7 @@ export default function WebsiteStatusPage() {
                   type="checkbox"
                   id="siteClosed"
                   checked={status?.closed || false}
-                  onChange={(e) => setStatus({ ...status, closed: e.target.checked })}
+                  onChange={(e) => setStatus(prev => prev ? { ...prev, closed: e.target.checked } : { closed: e.target.checked })}
                   className="w-5 h-5 text-navy-600 rounded"
                 />
                 <label htmlFor="siteClosed" className="text-sm text-gray-700">
@@ -125,7 +129,7 @@ export default function WebsiteStatusPage() {
                 <label className="block text-sm font-medium text-gray-700 mb-2">Kilit Nedeni</label>
                 <Input
                   value={status?.closedReason || ""}
-                  onChange={(e) => setStatus({ ...status, closedReason: e.target.value })}
+                  onChange={(e) => setStatus(prev => prev ? { ...prev, closedReason: e.target.value } : { closedReason: e.target.value })}
                   placeholder="Kilit nedeni..."
                 />
               </div>

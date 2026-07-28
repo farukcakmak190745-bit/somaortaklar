@@ -3,7 +3,7 @@
 import { useState, useEffect } from "react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { Phone, Truck, CheckCircle, ArrowUpRight, Users, RefreshCw, Image } from "lucide-react";
+import { Phone, Truck, CheckCircle, ArrowUpRight, Users, RefreshCw, Image as ImageIcon } from "lucide-react";
 import { getDB, resetDB } from "@/lib/db-local";
 import Link from "next/link";
 import { toast } from "sonner";
@@ -20,7 +20,7 @@ export default function DashboardPage() {
       setStats({
         totalServices: data.services.length,
         totalTestimonials: data.testimonials.length,
-        totalSliders: data.sliders.filter((s: any) => s.active).length
+        totalSliders: data.sliders.filter((s: { active: boolean }) => s.active).length
       });
     } catch (error) {
       console.error("Error loading stats:", error);
@@ -63,7 +63,7 @@ export default function DashboardPage() {
     {
       title: "Sliderlar",
       value: stats.totalSliders,
-      icon: Image,
+      icon: ImageIcon,
       color: "bg-blue-500",
       text: "text-blue-500",
       iconBg: "bg-blue-100",
@@ -166,7 +166,7 @@ export default function DashboardPage() {
             </Link>
             <Link href="/admin/sliders">
               <Button variant="outline" className="w-full justify-start h-12 hover:shadow-lg hover:scale-105 active:scale-95 transition-all duration-200">
-                <Image className="w-5 h-5 mr-3" />
+                <ImageIcon className="w-5 h-5 mr-3" />
                 Sliderlar
               </Button>
             </Link>

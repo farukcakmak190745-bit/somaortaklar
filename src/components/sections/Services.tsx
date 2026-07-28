@@ -106,7 +106,7 @@ export default function Services() {
                       service.icon.startsWith('truck') || service.icon.startsWith('alert') ||
                       service.icon.startsWith('battery') || service.icon.startsWith('wrench') ||
                       service.icon.startsWith('zap') || service.icon.startsWith('phone') ?
-                      createElement(getIcon(service.icon) as any, { className: "w-8 h-8 text-white" }) :
+                      createElement(getIcon(service.icon) as LucideIcon, { className: "w-8 h-8 text-white" }) :
                       null
                     )}
                   </div>

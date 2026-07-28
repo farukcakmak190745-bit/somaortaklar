@@ -51,7 +51,8 @@ export default function ServicesPage() {
   const loadServices = async () => {
     setLoading(true);
     try {
-      const data = await getServices();
+      const data = getServices();
+      await Promise.resolve();
       setServices(data);
     } catch (error) {
       console.error("Error loading services:", error);
@@ -64,6 +65,11 @@ export default function ServicesPage() {
   useEffect(() => {
     loadServices();
   }, []);
+
+  const handleFilterChange = (area: string) => {
+    setSelectedArea(area);
+    setCurrentPage(1);
+  };
 
   const filteredServices = selectedArea === "Tümü"
     ? services
@@ -105,24 +111,29 @@ export default function ServicesPage() {
 
     try {
       if (editingService) {
-        await updateService(editingService.id, formData);
+        updateService(editingService.id, formData);
+        toast.success("Hizmet güncellendi");
       } else {
-        await createService(formData);
+        createService(formData);
+        toast.success("Hizmet eklendi");
       }
       setDialogOpen(false);
       loadServices();
     } catch (error) {
       console.error("Error saving service:", error);
+      toast.error("Kaydetme hatası");
     }
   };
 
   const handleDelete = async (id: number) => {
     if (confirm("Bu hizmeti silmek istediğinizden emin misiniz?")) {
       try {
-        await deleteService(id);
+        deleteService(id);
+        toast.success("Hizmet silindi");
         loadServices();
       } catch (error) {
         console.error("Error deleting service:", error);
+        toast.error("Silme hatası");
       }
     }
   };
@@ -168,31 +179,24 @@ export default function ServicesPage() {
             <span className="text-sm font-medium text-gray-700">Filtrele:</span>
             <Button
               variant={selectedArea === "Tümü" ? "default" : "outline"}
-              onClick={() => setSelectedArea("Tümü")}
+              onClick={() => handleFilterChange("Tümü")}
               className="h-9 px-4"
             >
               Tümü ({services.length})
             </Button>
             <Button
               variant={selectedArea === "Şehir içi" ? "default" : "outline"}
-              onClick={() => setSelectedArea("Şehir içi")}
+              onClick={() => handleFilterChange("Şehir içi")}
               className="h-9 px-4"
             >
               Şehir içi
             </Button>
             <Button
               variant={selectedArea === "Şehirlerarası" ? "default" : "outline"}
-              onClick={() => setSelectedArea("Şehirlerarası")}
+              onClick={() => handleFilterChange("Şehirlerarası")}
               className="h-9 px-4"
             >
               Şehirlerarası
-            </Button>
-            <Button
-              variant={selectedArea === "Tümü" ? "default" : "outline"}
-              onClick={() => setSelectedArea("Tümü")}
-              className="h-9 px-4 ml-2"
-            >
-              Tümü ({services.length})
             </Button>
           </div>
         </CardContent>
@@ -410,7 +414,7 @@ export default function ServicesPage() {
       )}
 
       {/* Add/Edit Dialog */}
-      <Dialog open={dialogOpen}>
+      <Dialog open={dialogOpen} onOpenChange={setDialogOpen}>
         <DialogContent
           className="max-w-2xl max-h-[90vh] overflow-y-auto"
           onClick={(e) => e.stopPropagation()}

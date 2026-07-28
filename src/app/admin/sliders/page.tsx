@@ -18,6 +18,7 @@ import {
 } from "lucide-react";
 import {
   getSliders,
+  getAllSliders,
   createSlider,
   updateSlider,
   deleteSlider
@@ -42,7 +43,7 @@ export default function SlidersPage() {
   const loadSliders = async () => {
     setLoading(true);
     try {
-      const data = getSliders();
+      const data = getAllSliders();
       setSliders(data);
     } catch (error) {
       console.error("Error loading sliders:", error);
@@ -114,14 +115,15 @@ export default function SlidersPage() {
 
     try {
       if (editingSlider) {
-        await updateSlider(editingSlider.id, finalFormData);
+        updateSlider(editingSlider.id, finalFormData);
         toast.success("Slider güncellendi");
       } else {
-        await createSlider(finalFormData);
+        createSlider(finalFormData);
         toast.success("Slider eklendi");
       }
       setDialogOpen(false);
       setImagePreview("");
+      loadSliders();
     } catch (error) {
       console.error("Error saving slider:", error);
       toast.error("Slider kaydedilirken hata oluştu");
@@ -131,7 +133,7 @@ export default function SlidersPage() {
   const handleDelete = async (id: number) => {
     if (confirm("Bu slider'ı silmek istediğinizden emin misiniz?")) {
       try {
-        await deleteSlider(id);
+        deleteSlider(id);
         toast.success("Slider silindi");
         loadSliders();
       } catch (error) {
@@ -279,6 +281,16 @@ export default function SlidersPage() {
                   placeholder="Hizmet hakkında açıklama..."
                   rows={3}
                   required
+                />
+              </div>
+              <div>
+                <label className="block text-sm font-medium text-gray-700 mb-2">
+                  CTA Buton Metni (İsteğe bağlı)
+                </label>
+                <Input
+                  value={(formData as any).ctaText || ""}
+                  onChange={(e) => setFormData({ ...formData, ctaText: e.target.value } as any)}
+                  placeholder="Örn: Hemen İncele"
                 />
               </div>
               <div>

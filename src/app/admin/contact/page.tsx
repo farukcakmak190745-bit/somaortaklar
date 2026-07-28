@@ -27,7 +27,7 @@ export default function ContactPage() {
   const loadContact = async () => {
     setLoading(true);
     try {
-      const data = await getContact();
+      const data = getContact();
       setContact(data);
     } catch (error) {
       console.error("Error loading contact:", error);
@@ -40,6 +40,11 @@ export default function ContactPage() {
   useEffect(() => {
     loadContact();
   }, []);
+
+  const copyToClipboard = (text: string) => {
+    navigator.clipboard.writeText(text);
+    toast.success("Kopyalandı!");
+  };
 
   const handleSave = async () => {
     setSaving(true);
@@ -183,24 +188,6 @@ export default function ContactPage() {
                     </>
                   )}
                 </Button>
-                <Button
-                  type="submit"
-                  onClick={handleSave}
-                  disabled={saving}
-                  className="w-full h-12 bg-green-600 hover:bg-green-700 text-white"
-                >
-                  {saving ? (
-                    <>
-                      <div className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin mr-2"></div>
-                      Kaydediliyor...
-                    </>
-                  ) : (
-                    <>
-                      <Save className="w-4 h-4 mr-2" />
-                      Kaydet
-                    </>
-                  )}
-                </Button>
               </form>
             )}
           </CardContent>
@@ -271,9 +258,4 @@ export default function ContactPage() {
       </div>
     </div>
   );
-
-  const copyToClipboard = (text: string) => {
-    navigator.clipboard.writeText(text);
-    toast.success("Kopyalandı!");
-  };
 }

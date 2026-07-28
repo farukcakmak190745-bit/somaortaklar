@@ -17,6 +17,7 @@ type SEOData = {
   ogDescription?: string;
   ogImage?: string;
   twitterCard?: string;
+  siteUrl?: string;
 };
 
 export default function SEOPage() {
@@ -51,6 +52,10 @@ export default function SEOPage() {
       setLoading(false);
     }
   };
+
+  useEffect(() => {
+    loadData();
+  }, []);
 
   const handleSave = async () => {
     if (!seo) return;
@@ -185,10 +190,10 @@ export default function SEOPage() {
             <div>
               <label className="block text-sm font-medium text-gray-700 mb-2">Site URL</label>
               <Input
-                value={seo?.ogImage || ""}
+                value={seo?.siteUrl || ""}
                 onChange={(e) => {
                   if (!seo) return;
-                  setSeo({ ...seo, ogImage: e.target.value });
+                  setSeo({ ...seo, siteUrl: e.target.value });
                 }}
                 placeholder="https://siteniz.com"
               />
@@ -207,12 +212,12 @@ export default function SEOPage() {
                 <div className="text-sm font-medium text-gray-700">Meta Tag Preview:</div>
                 <pre className="text-xs bg-white p-3 rounded border overflow-x-auto">
                   &lt;title&gt;{seo?.title || 'Site Başlığı'}&lt;/title&gt;
-                  &lt;meta name="description" content={seo?.description || 'Site açıklaması'} /&gt;
-                  &lt;meta name="keywords" content={seo?.keywords?.join(', ') || ''} /&gt;
-                  &lt;meta name="og:title" content={seo?.ogTitle || seo?.title || ''} /&gt;
-                  &lt;meta name="og:description" content={seo?.ogDescription || seo?.description || ''} /&gt;
-                  &lt;meta name="og:image" content={seo?.ogImage || ''} /&gt;
-                  &lt;meta name="twitter:card" content={seo?.twitterCard || 'summary'} /&gt;
+                  &lt;meta name=&quot;description&quot; content=&quot;{seo?.description || 'Site açıklaması'}&quot; /&gt;
+                  &lt;meta name=&quot;keywords&quot; content=&quot;{seo?.keywords?.join(', ') || ''}&quot; /&gt;
+                  &lt;meta name=&quot;og:title&quot; content=&quot;{seo?.ogTitle || seo?.title || ''}&quot; /&gt;
+                  &lt;meta name=&quot;og:description&quot; content=&quot;{seo?.ogDescription || seo?.description || ''}&quot; /&gt;
+                  &lt;meta name=&quot;og:image&quot; content=&quot;{seo?.ogImage || ''}&quot; /&gt;
+                  &lt;meta name=&quot;twitter:card&quot; content=&quot;{seo?.twitterCard || 'summary'}&quot; /&gt;
                 </pre>
               </div>
             </div>

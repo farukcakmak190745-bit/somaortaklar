@@ -7,9 +7,11 @@ import { Input } from "@/components/ui/input";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { AlertCircle, Lock, User } from "lucide-react";
 import { toast } from "sonner";
+import { useAdminAuth } from "@/hooks/use-admin-auth";
 
 export default function LoginPage() {
   const router = useRouter();
+  const { login } = useAdminAuth();
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
@@ -20,11 +22,11 @@ export default function LoginPage() {
     setError("");
     setLoading(true);
 
-    // Simple authentication check
-    if (username === "admin" && password === "admin") {
-      localStorage.setItem("adminAuth", "true");
+    const success = login(username, password);
+    if (success) {
       toast.success("Giriş başarılı!");
       router.push("/admin/dashboard");
+      // Don't reset loading, let the page transition handle it
     } else {
       setError("Hatalı kullanıcı adı veya şifre");
       toast.error("Giriş başarısız");

@@ -32,6 +32,12 @@ export default function AdminLayout({
   const { logout } = useAdminAuth();
   const pathname = usePathname();
 
+  const isLoginPage = pathname === "/admin/login";
+
+  if (isLoginPage) {
+    return <>{children}</>;
+  }
+
   const handleLogout = () => {
     logout();
   };
