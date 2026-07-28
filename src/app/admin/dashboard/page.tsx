@@ -1,14 +1,16 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import { useRouter } from "next/navigation";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { Phone, Truck, CheckCircle, ArrowUpRight, Users, RefreshCw, Image as ImageIcon } from "lucide-react";
+import { Phone, Truck, CheckCircle, ArrowUpRight, Users, RefreshCw, Image as ImageIcon, LogOut } from "lucide-react";
 import { getDB, resetDB } from "@/lib/db-local";
 import Link from "next/link";
 import { toast } from "sonner";
 
 export default function DashboardPage() {
+  const router = useRouter();
   const [stats, setStats] = useState({ totalServices: 0, totalTestimonials: 0, totalSliders: 0 });
   const [loading, setLoading] = useState(true);
   const [refreshing, setRefreshing] = useState(false);
@@ -30,10 +32,26 @@ export default function DashboardPage() {
     }
   };
 
+  // Check auth
+  useEffect(() => {
+    const auth = localStorage.getItem("adminToken");
+    if (auth !== "valid") {
+      router.push("/admin/login");
+    }
+  }, [router]);
+
   // Initial load
   useEffect(() => {
     loadStats();
   }, []);
+
+  const handleLogout = () => {
+    if (confirm("Çıkış yapmak istediğinizden emin misiniz?")) {
+      localStorage.removeItem("adminToken");
+      router.push("/admin/login");
+      toast.success("Çıkış yapıldı");
+    }
+  };
 
   const handleRefresh = async () => {
     setRefreshing(true);
@@ -87,6 +105,15 @@ export default function DashboardPage() {
           <p className="text-gray-600 mt-1">Hoş geldiniz! İşte sitenizin istatistikleri.</p>
         </div>
         <div className="flex items-center space-x-3">
+          <Button
+            onClick={handleLogout}
+            variant="outline"
+            size="sm"
+            className="h-10 px-4 hover:bg-red-50 hover:text-red-600 hover:border-red-200 hover:shadow-md transition-all duration-200"
+          >
+            <LogOut className="w-4 h-4 mr-2" />
+            Çıkış Yap
+          </Button>
           <Button
             onClick={handleReset}
             variant="outline"

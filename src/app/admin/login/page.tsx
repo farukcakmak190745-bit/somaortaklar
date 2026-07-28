@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -11,11 +11,18 @@ import { useAdminAuth } from "@/hooks/use-admin-auth";
 
 export default function LoginPage() {
   const router = useRouter();
-  const { login } = useAdminAuth();
+  const { login, isAuthenticated } = useAdminAuth();
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
+
+  useEffect(() => {
+    // Check if already authenticated
+    if (isAuthenticated) {
+      router.push("/admin/dashboard");
+    }
+  }, [isAuthenticated, router]);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -25,7 +32,9 @@ export default function LoginPage() {
     const success = login(username, password);
     if (success) {
       toast.success("Giriş başarılı!");
-      router.push("/admin/dashboard");
+      setTimeout(() => {
+        router.push("/admin/dashboard");
+      }, 500);
       // Don't reset loading, let the page transition handle it
     } else {
       setError("Hatalı kullanıcı adı veya şifre");
