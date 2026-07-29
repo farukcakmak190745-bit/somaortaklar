@@ -127,11 +127,6 @@ export default function Hero() {
           </motion.div>
         </div>
 
-        <div className="absolute bottom-10 left-1/2 transform -translate-x-1/2 z-20">
-          <div className="w-10 h-16 bg-white/20 backdrop-blur-sm rounded-full flex items-start justify-center p-2">
-            <div className="w-2 h-3 bg-white rounded-full animate-bounce" />
-          </div>
-        </div>
       </section>
     );
   }
@@ -221,16 +216,7 @@ export default function Hero() {
         ))}
       </div>
 
-      {/* Scroll Indicator */}
-      <motion.div
-        animate={{ y: [0, 10, 0] }}
-        transition={{ duration: 1.5, repeat: Infinity }}
-        className="absolute bottom-10 left-1/2 transform -translate-x-1/2 z-20"
-      >
-        <div className="w-10 h-16 bg-white/20 backdrop-blur-sm rounded-full flex items-start justify-center p-2">
-          <div className="w-2 h-3 bg-white rounded-full animate-bounce" />
-        </div>
-      </motion.div>
+
     </section>
   );
 }
