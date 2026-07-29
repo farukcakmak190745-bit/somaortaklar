@@ -34,6 +34,7 @@ export default function LoginPage() {
     if (username === ADMIN_USERNAME && password === ADMIN_PASSWORD) {
       localStorage.setItem("adminToken", "valid");
       localStorage.setItem("adminAuth", "true");
+      document.cookie = "adminAuth=true; path=/; max-age=86400";
       setLoading(false);
       toast.success("Giriş başarılı!");
       router.push("/admin/dashboard");

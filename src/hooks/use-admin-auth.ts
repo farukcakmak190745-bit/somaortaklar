@@ -47,6 +47,7 @@ export function useAdminAuth() {
   const logout = () => {
     localStorage.removeItem(AUTH_KEY);
     localStorage.removeItem("adminToken");
+    document.cookie = "adminAuth=; path=/; max-age=0";
     setIsAuthenticated(false);
     router.push("/admin/login");
     toast.success("Çıkış yapıldı");
