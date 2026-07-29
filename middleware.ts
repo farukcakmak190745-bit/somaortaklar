@@ -8,6 +8,11 @@ export function middleware(request: NextRequest) {
   if (pathname.startsWith('/admin')) {
     const auth = request.cookies.get('adminAuth')?.value;
 
+    // Redirect /admin to dashboard or login
+    if (pathname === '/admin') {
+      return NextResponse.redirect(new URL(auth ? '/admin/dashboard' : '/admin/login', request.url));
+    }
+
     // Allow access to login page
     if (pathname === '/admin/login') {
       if (auth) {
