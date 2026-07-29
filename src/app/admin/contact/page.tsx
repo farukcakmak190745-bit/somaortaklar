@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import { useRouter } from "next/navigation";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
@@ -11,6 +12,7 @@ import type { ContactInfo } from "@/types";
 import { toast } from "sonner";
 
 export default function ContactPage() {
+  const router = useRouter();
   const [contact, setContact] = useState<ContactInfo>({
     phone: "",
     phone2: "",
@@ -20,6 +22,13 @@ export default function ContactPage() {
   });
   const [loading, setLoading] = useState(true);
   const [saving, setSaving] = useState(false);
+
+  useEffect(() => {
+    const token = localStorage.getItem("adminToken");
+    if (token !== "valid") {
+      router.push("/admin/login");
+    }
+  }, [router]);
 
   const loadContact = async () => {
     setLoading(true);

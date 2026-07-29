@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import { useRouter } from "next/navigation";
 import { Button } from "@/components/ui/button";
 import { getSEO, updateSEO } from "@/lib/db-local";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
@@ -227,3 +228,4 @@ export default function SEOPage() {
     </div>
   );
 }
+

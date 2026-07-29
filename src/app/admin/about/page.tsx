@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import { useRouter } from "next/navigation";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
@@ -15,8 +16,16 @@ type AboutData = {
 };
 
 export default function AboutPage() {
+  const router = useRouter();
   const [about, setAbout] = useState<AboutData | null>(null);
   const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const token = localStorage.getItem("adminToken");
+    if (token !== "valid") {
+      router.push("/admin/login");
+    }
+  }, [router]);
 
   const loadData = async () => {
     try {

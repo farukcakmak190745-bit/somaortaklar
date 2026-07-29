@@ -7,11 +7,12 @@ import { Input } from "@/components/ui/input";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { AlertCircle, Lock, User } from "lucide-react";
 import { toast } from "sonner";
-import { useAdminAuth } from "@/hooks/use-admin-auth";
+
+const ADMIN_USERNAME = "admin";
+const ADMIN_PASSWORD = "admin";
 
 export default function LoginPage() {
   const router = useRouter();
-  const { login, isAuthenticated } = useAdminAuth();
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
@@ -19,23 +20,23 @@ export default function LoginPage() {
 
   useEffect(() => {
     // Check if already authenticated
-    if (isAuthenticated) {
+    const token = localStorage.getItem("adminToken");
+    if (token === "valid") {
       router.push("/admin/dashboard");
     }
-  }, [isAuthenticated, router]);
+  }, [router]);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setError("");
     setLoading(true);
 
-    const success = login(username, password);
-    if (success) {
+    if (username === ADMIN_USERNAME && password === ADMIN_PASSWORD) {
+      localStorage.setItem("adminToken", "valid");
+      localStorage.setItem("adminAuth", "true");
+      setLoading(false);
       toast.success("Giriş başarılı!");
-      setTimeout(() => {
-        router.push("/admin/dashboard");
-      }, 500);
-      // Don't reset loading, let the page transition handle it
+      router.push("/admin/dashboard");
     } else {
       setError("Hatalı kullanıcı adı veya şifre");
       toast.error("Giriş başarısız");
