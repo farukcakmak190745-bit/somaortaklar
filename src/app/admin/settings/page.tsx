@@ -1,7 +1,6 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { useRouter } from "next/navigation";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
@@ -13,7 +12,6 @@ import type { FooterInfo } from "@/types";
 import { toast } from "sonner";
 
 export default function SettingsPage() {
-  const router = useRouter();
   const [hero, setHero] = useState<HeroSection>({
     title: "",
     subtitle: "",

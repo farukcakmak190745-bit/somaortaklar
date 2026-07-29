@@ -5,7 +5,7 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { toast } from "sonner";
 import { useState, useEffect } from "react";
-import { getFooter, getContact } from "@/lib/db-local";
+import { getFooter } from "@/lib/db-local";
 
 export default function Footer() {
   const router = useRouter();

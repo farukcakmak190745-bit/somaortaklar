@@ -5,7 +5,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { NativeSelect } from "@/components/ui/select";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Card, CardContent, CardHeader } from "@/components/ui/card";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogFooter } from "@/components/ui/dialog";
 import {
   Trash2,
@@ -17,7 +17,6 @@ import {
   Upload as UploadIcon
 } from "lucide-react";
 import {
-  getSliders,
   getAllSliders,
   createSlider,
   updateSlider,
@@ -35,6 +34,7 @@ export default function SlidersPage() {
   const [formData, setFormData] = useState<Omit<Slider, 'id'>>({
     title: "",
     description: "",
+    ctaText: "",
     imageUrl: "",
     order: 1,
     active: true
@@ -288,8 +288,8 @@ export default function SlidersPage() {
                   CTA Buton Metni (İsteğe bağlı)
                 </label>
                 <Input
-                  value={(formData as any).ctaText || ""}
-                  onChange={(e) => setFormData({ ...formData, ctaText: e.target.value } as any)}
+                  value={formData.ctaText || ""}
+                  onChange={(e) => setFormData({ ...formData, ctaText: e.target.value })}
                   placeholder="Örn: Hemen İncele"
                 />
               </div>

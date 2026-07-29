@@ -37,18 +37,6 @@ export default function Hero() {
     loadMounted();
   }, []);
 
-  // Debugging
-  useEffect(() => {
-    if (mounted && sliders.length > 0) {
-      console.log('Hero Slider Debug:', {
-        slidersCount: sliders.length,
-        currentIndex,
-        currentSliderImage: currentSlider.imageUrl,
-        hasActiveSliders: sliders.some(s => s.active)
-      });
-    }
-  }, [mounted, sliders, currentIndex, currentSlider.imageUrl]);
-
   // Auto slide
   useEffect(() => {
     if (!mounted || sliders.length === 0) return;

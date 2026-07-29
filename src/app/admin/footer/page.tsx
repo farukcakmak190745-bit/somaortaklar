@@ -1,12 +1,12 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { useRouter } from "next/navigation";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Save, ExternalLink, Trash2, Phone } from "lucide-react";
+import type { FooterInfo } from "@/types";
 import {
   getFooter,
   updateFooter
@@ -36,21 +36,13 @@ export default function FooterPage() {
   const [loading, setLoading] = useState(true);
   const [saving, setSaving] = useState(false);
 
-  useEffect(() => {
-    loadData();
-  }, []);
-
   const loadData = async () => {
     setLoading(true);
     try {
-      console.log('loadData called');
       const data = getFooter();
-      console.log('Footer Data from getFooter():', data);
       if (data) {
-        console.log('Setting Footer state:', data);
         setFooter(data);
       } else {
-        console.error('Footer data is null');
         // Set default values
         setFooter({
           social: {
@@ -70,11 +62,16 @@ export default function FooterPage() {
     }
   };
 
+  useEffect(() => {
+    loadData();
+  }, []);
+
   const handleSave = async () => {
     if (!footer) return;
     setSaving(true);
     try {
-      await updateFooter(footer as any);
+      const { social, quickLinks } = footer;
+      await updateFooter({ social, quickLinks } as FooterInfo);
       toast.success("Footer ayarları başarıyla kaydedildi!");
     } catch (error) {
       console.error("Error saving footer:", error);

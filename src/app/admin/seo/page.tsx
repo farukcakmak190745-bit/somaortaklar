@@ -1,7 +1,6 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { useRouter } from "next/navigation";
 import { Button } from "@/components/ui/button";
 import { getSEO, updateSEO } from "@/lib/db-local";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
@@ -28,14 +27,10 @@ export default function SEOPage() {
   const loadData = async () => {
     setLoading(true);
     try {
-      console.log('loadData called');
       const data = getSEO();
-      console.log('SEO Data from getSEO():', data);
       if (data) {
-        console.log('Setting SEO state:', data);
         setSeo(data);
       } else {
-        console.error('SEO data is null');
         // Set default values
         setSeo({
           title: 'Soma Ortaklar Yol Yardım',
