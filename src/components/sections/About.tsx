@@ -33,7 +33,7 @@ export default function About() {
 
   if (!mounted || !about) {
     return (
-    <section id="about" className="py-32 bg-gradient-to-b from-navy-950/90 via-navy-900/85 to-navy-950/90 text-blue-200">
+    <section id="hakkimizda" className="py-32 bg-gradient-to-b from-navy-950/90 via-navy-900/85 to-navy-950/90 text-blue-200">
         <div className="container mx-auto px-4 md:px-6">
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-5xl font-bold mb-4 text-white">Yükleniyor...</h2>
@@ -44,7 +44,7 @@ export default function About() {
   }
 
   return (
-    <section id="about" className="py-32 bg-gradient-to-b from-navy-950/90 via-navy-900/85 to-navy-950/90 text-blue-200">
+    <section id="hakkimizda" className="py-32 bg-gradient-to-b from-navy-950/90 via-navy-900/85 to-navy-950/90 text-blue-200">
       <div className="container mx-auto px-4 md:px-6">
         <motion.div
           initial={{ opacity: 0, y: -20 }}

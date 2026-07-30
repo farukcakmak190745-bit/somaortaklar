@@ -29,7 +29,7 @@ export default function LoginPage() {
     // Check if already authenticated
     const token = localStorage.getItem("adminToken");
     if (token === "valid") {
-      router.push("/admin/dashboard");
+      router.push("/admin/panel");
     }
   }, [router]);
 
@@ -45,7 +45,7 @@ export default function LoginPage() {
       document.cookie = "adminAuth=true; path=/; max-age=86400";
       setLoading(false);
       toast.success("Giriş başarılı!");
-      router.push("/admin/dashboard");
+      router.push("/admin/panel");
     } else {
       setError("Hatalı kullanıcı adı veya şifre");
       toast.error("Giriş başarısız");

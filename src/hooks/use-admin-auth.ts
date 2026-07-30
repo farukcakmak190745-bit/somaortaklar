@@ -32,8 +32,8 @@ export function useAdminAuth() {
 
       if (token === "valid" || auth === "true") {
         setIsAuthenticated(true);
-      } else if (!pathname.startsWith("/admin/login")) {
-        router.push("/admin/login");
+      } else if (!pathname.startsWith("/admin/giris")) {
+        router.push("/admin/giris");
       }
     };
 
@@ -61,7 +61,7 @@ export function useAdminAuth() {
     localStorage.removeItem("adminToken");
     document.cookie = "adminAuth=; path=/; max-age=0";
     setIsAuthenticated(false);
-    router.push("/admin/login");
+    router.push("/admin/giris");
     toast.success("Çıkış yapıldı");
   };
 

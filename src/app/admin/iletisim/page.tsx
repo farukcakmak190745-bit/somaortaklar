@@ -26,7 +26,7 @@ export default function ContactPage() {
   useEffect(() => {
     const token = localStorage.getItem("adminToken");
     if (token !== "valid") {
-      router.push("/admin/login");
+      router.push("/admin/giris");
     }
   }, [router]);
 

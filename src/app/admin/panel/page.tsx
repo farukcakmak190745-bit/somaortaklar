@@ -187,19 +187,19 @@ export default function DashboardPage() {
         </CardHeader>
         <CardContent>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3">
-            <Link href="/admin/services">
+            <Link href="/admin/hizmetler">
               <Button variant="outline" className="w-full justify-start h-12 hover:shadow-lg hover:scale-105 active:scale-95 transition-all duration-200">
                 <Truck className="w-5 h-5 mr-3" />
                 Hizmetler
               </Button>
             </Link>
-            <Link href="/admin/sliders">
+            <Link href="/admin/sliderlar">
               <Button variant="outline" className="w-full justify-start h-12 hover:shadow-lg hover:scale-105 active:scale-95 transition-all duration-200">
                 <ImageIcon className="w-5 h-5 mr-3" />
                 Sliderlar
               </Button>
             </Link>
-            <Link href="/admin/testimonials">
+            <Link href="/admin/musteri-yorumlari">
               <Button variant="outline" className="w-full justify-start h-12 hover:shadow-lg hover:scale-105 active:scale-95 transition-all duration-200">
                 <CheckCircle className="w-5 h-5 mr-3" />
                 Referanslar

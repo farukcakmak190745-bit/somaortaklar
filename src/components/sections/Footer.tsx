@@ -31,7 +31,7 @@ export default function Footer() {
     if (typeof window !== 'undefined') {
       localStorage.removeItem('adminAuth');
     }
-    router.push('/admin/login');
+    router.push('/admin/giris');
     toast.success('Çıkış yapıldı');
   };
 
@@ -54,7 +54,7 @@ export default function Footer() {
           {isAuthenticated && (
             <div className="lg:col-span-4 border-b border-navy-800 pb-6 mb-6">
               <Link
-                href="/admin/dashboard"
+                href="/admin/panel"
                 className="inline-flex items-center space-x-2 text-navy-400 hover:text-navy-300 transition-colors"
               >
                 <LayoutDashboard className="w-5 h-5" />

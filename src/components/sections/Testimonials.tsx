@@ -18,7 +18,7 @@ export default function Testimonials() {
 
   if (!mounted) {
     return (
-      <section id="testimonials" className="py-32 bg-gradient-to-b from-navy-900/95 via-navy-950/90 to-navy-900/95">
+      <section id="musteri-yorumlari" className="py-32 bg-gradient-to-b from-navy-900/95 via-navy-950/90 to-navy-900/95">
         <div className="container mx-auto px-4 md:px-6">
           <div className="text-center mb-16">
             <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">Müşterilerimiz Ne Diyor?</h2>
@@ -30,7 +30,7 @@ export default function Testimonials() {
   }
 
   return (
-    <section id="testimonials" className="py-32 bg-gradient-to-b from-navy-950/95 via-navy-900/90 to-navy-950/95">
+    <section id="musteri-yorumlari" className="py-32 bg-gradient-to-b from-navy-950/95 via-navy-900/90 to-navy-950/95">
       <div className="container mx-auto px-4 md:px-6">
         <motion.div
           initial={{ opacity: 0, y: -20 }}

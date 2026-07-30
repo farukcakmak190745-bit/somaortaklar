@@ -11,15 +11,15 @@ import { usePathname } from "next/navigation";
 import { useAdminAuth } from "@/hooks/use-admin-auth";
 
 const menuItems = [
-  { name: "Dashboard", href: "/admin/dashboard", icon: LayoutDashboard },
-  { name: "Hizmet Yönetimi", href: "/admin/services", icon: ClipboardList },
-  { name: "Slider Yönetimi", href: "/admin/sliders", icon: Image },
-  { name: "Referans Yönetimi", href: "/admin/testimonials", icon: Users },
+  { name: "Panel", href: "/admin/panel", icon: LayoutDashboard },
+  { name: "Hizmet Yönetimi", href: "/admin/hizmetler", icon: ClipboardList },
+  { name: "Slider Yönetimi", href: "/admin/sliderlar", icon: Image },
+  { name: "Referans Yönetimi", href: "/admin/musteri-yorumlari", icon: Users },
   { name: "SEO Ayarları", href: "/admin/seo", icon: Search },
-  { name: "Hakkımızda", href: "/admin/about", icon: Info },
-  { name: "Footer Ayarları", href: "/admin/footer", icon: MousePointer },
-  { name: "İletişim", href: "/admin/contact", icon: Phone },
-  { name: "Ayarlar", href: "/admin/settings", icon: Settings },
+  { name: "Hakkımızda", href: "/admin/hakkimizda", icon: Info },
+  { name: "Footer Ayarları", href: "/admin/altbilgi", icon: MousePointer },
+  { name: "İletişim", href: "/admin/iletisim", icon: Phone },
+  { name: "Ayarlar", href: "/admin/ayarlar", icon: Settings },
 ];
 
 export default function AdminLayout({
@@ -31,7 +31,7 @@ export default function AdminLayout({
   const { logout } = useAdminAuth();
   const pathname = usePathname();
 
-  const isLoginPage = pathname === "/admin/login";
+  const isLoginPage = pathname === "/admin/giris";
 
   if (isLoginPage) {
     return <>{children}</>;

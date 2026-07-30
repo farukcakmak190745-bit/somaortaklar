@@ -42,7 +42,7 @@ export default function Contact() {
   ];
 
   return (
-    <section id="contact" className="py-32 bg-gradient-to-b from-navy-950/90 via-navy-900/85 to-navy-950/90">
+    <section id="iletisim" className="py-32 bg-gradient-to-b from-navy-950/90 via-navy-900/85 to-navy-950/90">
       <div className="container mx-auto px-4 md:px-6">
         <motion.div
           initial={{ opacity: 0, y: -20 }}

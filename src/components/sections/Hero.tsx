@@ -103,7 +103,7 @@ export default function Hero() {
 
   if (!mounted) {
     return (
-      <section id="home" className="relative min-h-screen flex items-center justify-center overflow-hidden">
+      <section id="anasayfa" className="relative min-h-screen flex items-center justify-center overflow-hidden">
         <div className="absolute inset-0">
           <Image 
             src="https://images.unsplash.com/photo-1621922688158-5092bdb99b12?w=1920&q=80"
@@ -121,7 +121,7 @@ export default function Hero() {
   }
 
   return (
-    <section id="home" className="relative min-h-screen flex items-center justify-center overflow-hidden">
+    <section id="anasayfa" className="relative min-h-screen flex items-center justify-center overflow-hidden">
       <div className="absolute inset-0 transition-opacity duration-1000">
         <Image
           key={currentSlider?.imageUrl}

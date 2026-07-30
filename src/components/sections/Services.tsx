@@ -25,7 +25,7 @@ export default function Services() {
 
   if (!mounted) {
     return (
-    <section id="services" className="py-32 bg-gradient-to-b from-navy-900/95 via-navy-950/90 to-navy-900/95">
+    <section id="hizmetlerimiz" className="py-32 bg-gradient-to-b from-navy-900/95 via-navy-950/90 to-navy-900/95">
         <div className="container mx-auto px-4 md:px-6">
           <motion.div
             initial={{ opacity: 0, y: -20 }}
@@ -68,7 +68,7 @@ export default function Services() {
   };
 
   return (
-    <section id="services" className="py-32 bg-gradient-to-b from-navy-900/95 via-navy-950/90 to-navy-900/95">
+    <section id="hizmetlerimiz" className="py-32 bg-gradient-to-b from-navy-900/95 via-navy-950/90 to-navy-900/95">
       <div className="container mx-auto px-4 md:px-6">
         {/* Section Header */}
         <motion.div

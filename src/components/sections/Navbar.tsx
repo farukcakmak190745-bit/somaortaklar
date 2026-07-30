@@ -55,10 +55,10 @@ export default function Navbar() {
 
   const navItems = [
     { name: "Anasayfa", href: "/", isHash: false },
-    { name: "Hakkımızda", href: "#about", isHash: true },
-    { name: "Hizmetlerimiz", href: "#services", isHash: true },
-    { name: "Referanslar", href: "#testimonials", isHash: true },
-    { name: "İletişim", href: "#contact", isHash: true },
+    { name: "Hakkımızda", href: "#hakkimizda", isHash: true },
+    { name: "Hizmetlerimiz", href: "#hizmetlerimiz", isHash: true },
+    { name: "Referanslar", href: "#musteri-yorumlari", isHash: true },
+    { name: "İletişim", href: "#iletisim", isHash: true },
   ];
 
   return (
@@ -109,7 +109,7 @@ export default function Navbar() {
               )
             ))}
             <Link
-              href="#contact"
+              href="#iletisim"
               onClick={() => setIsOpen(false)}
               className="bg-amber-500 hover:bg-amber-600 text-white px-6 py-2.5 rounded-full font-medium transition-all duration-200 flex items-center justify-center space-x-2 shadow-lg hover:shadow-xl"
             >
@@ -153,7 +153,7 @@ export default function Navbar() {
                 )
               ))}
               <Link
-                href="#contact"
+                href="#iletisim"
                 onClick={() => setIsOpen(false)}
                 className="bg-amber-500 hover:bg-amber-600 text-white px-6 py-3 rounded-full font-medium transition-all duration-200 flex items-center justify-center space-x-2 shadow-lg hover:shadow-xl"
               >
