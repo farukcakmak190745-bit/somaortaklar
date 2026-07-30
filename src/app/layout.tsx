@@ -5,6 +5,7 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/sections/Navbar";
 import Footer from "@/components/sections/Footer";
+import FloatingContact from "@/components/sections/FloatingContact";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -29,6 +30,7 @@ export default function RootLayout({
         {!isAdminPage && <Navbar />}
         <main className="flex-1">{children}</main>
         {!isAdminPage && <Footer />}
+        {!isAdminPage && <FloatingContact />}
       </body>
     </html>
   );

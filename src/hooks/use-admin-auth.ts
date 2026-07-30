@@ -5,13 +5,25 @@ import { useRouter, usePathname } from "next/navigation";
 import { toast } from "sonner";
 
 const ADMIN_USERNAME = "admin";
-const ADMIN_PASSWORD = "admin";
 const AUTH_KEY = "adminAuth";
+const PASSWORD_KEY = "adminPassword";
+
+function getStoredPassword(): string {
+  if (typeof window !== "undefined") {
+    return localStorage.getItem(PASSWORD_KEY) || "admin";
+  }
+  return "admin";
+}
 
 export function useAdminAuth() {
   const router = useRouter();
   const pathname = usePathname();
   const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const [currentPassword, setCurrentPassword] = useState("admin");
+
+  useEffect(() => {
+    setCurrentPassword(getStoredPassword());
+  }, []);
 
   useEffect(() => {
     const checkAuth = () => {
@@ -27,13 +39,13 @@ export function useAdminAuth() {
 
     checkAuth();
 
-    // Listen for storage changes (e.g., from other tabs)
     window.addEventListener("storage", checkAuth);
     return () => window.removeEventListener("storage", checkAuth);
   }, [pathname, router]);
 
   const login = (username: string, password: string): boolean => {
-    if (username === ADMIN_USERNAME && password === ADMIN_PASSWORD) {
+    const storedPassword = getStoredPassword();
+    if (username === ADMIN_USERNAME && password === storedPassword) {
       localStorage.setItem(AUTH_KEY, "true");
       localStorage.setItem("adminToken", "valid");
       setIsAuthenticated(true);

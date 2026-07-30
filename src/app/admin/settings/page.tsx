@@ -5,7 +5,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Save, AlertCircle, CheckCircle } from "lucide-react";
+import { Save, AlertCircle, CheckCircle, Shield } from "lucide-react";
 import { getHero, updateHero, getFooter, updateFooter } from "@/lib/db-local";
 import type { HeroSection } from "@/types";
 import type { FooterInfo } from "@/types";
@@ -29,6 +29,10 @@ export default function SettingsPage() {
     quickLinks: [],
     contactInfo: undefined
   });
+  const [currentPassword, setCurrentPassword] = useState("");
+  const [newPassword, setNewPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
+  const [passwordSaving, setPasswordSaving] = useState(false);
   const [loading, setLoading] = useState(true);
   const [saving, setSaving] = useState(false);
 
@@ -92,6 +96,37 @@ export default function SettingsPage() {
       toast.error("Kaydedilirken bir hata oluştu");
     } finally {
       setSaving(false);
+    }
+  };
+
+  const handleChangePassword = async () => {
+    setPasswordSaving(true);
+    try {
+      const storedPassword = localStorage.getItem("adminPassword") || "admin";
+      if (currentPassword !== storedPassword) {
+        toast.error("Mevcut şifre hatalı!");
+        setPasswordSaving(false);
+        return;
+      }
+      if (newPassword.length < 4) {
+        toast.error("Yeni şifre en az 4 karakter olmalıdır!");
+        setPasswordSaving(false);
+        return;
+      }
+      if (newPassword !== confirmPassword) {
+        toast.error("Yeni şifreler eşleşmiyor!");
+        setPasswordSaving(false);
+        return;
+      }
+      localStorage.setItem("adminPassword", newPassword);
+      setCurrentPassword("");
+      setNewPassword("");
+      setConfirmPassword("");
+      toast.success("Şifre başarıyla değiştirildi!");
+    } catch {
+      toast.error("Bir hata oluştu");
+    } finally {
+      setPasswordSaving(false);
     }
   };
 
@@ -307,6 +342,71 @@ export default function SettingsPage() {
           </CardContent>
         </Card>
       </div>
+
+      {/* Password Change */}
+      <Card className="border-red-200">
+        <CardHeader>
+          <CardTitle className="flex items-center text-red-700">
+            <Shield className="w-5 h-5 mr-2" />
+            Admin Şifre Değiştir
+          </CardTitle>
+        </CardHeader>
+        <CardContent>
+          <form className="space-y-4" onSubmit={(e) => e.preventDefault()}>
+            <div>
+              <label className="block text-sm font-medium text-gray-700 mb-2">
+                Mevcut Şifre
+              </label>
+              <Input
+                type="password"
+                value={currentPassword}
+                onChange={(e) => setCurrentPassword(e.target.value)}
+                placeholder="••••••••"
+              />
+            </div>
+            <div>
+              <label className="block text-sm font-medium text-gray-700 mb-2">
+                Yeni Şifre
+              </label>
+              <Input
+                type="password"
+                value={newPassword}
+                onChange={(e) => setNewPassword(e.target.value)}
+                placeholder="En az 4 karakter"
+              />
+            </div>
+            <div>
+              <label className="block text-sm font-medium text-gray-700 mb-2">
+                Yeni Şifre (Tekrar)
+              </label>
+              <Input
+                type="password"
+                value={confirmPassword}
+                onChange={(e) => setConfirmPassword(e.target.value)}
+                placeholder="Yeni şifrenizi tekrar girin"
+              />
+            </div>
+            <Button
+              type="submit"
+              onClick={handleChangePassword}
+              disabled={passwordSaving || !currentPassword || !newPassword || !confirmPassword}
+              className="w-full h-12 bg-red-600 hover:bg-red-700"
+            >
+              {passwordSaving ? (
+                <>
+                  <div className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin mr-2"></div>
+                  Kaydediliyor...
+                </>
+              ) : (
+                <>
+                  <Save className="w-4 h-4 mr-2" />
+                  Şifreyi Güncelle
+                </>
+              )}
+            </Button>
+          </form>
+        </CardContent>
+      </Card>
 
       {/* Info Card */}
       <Card className="bg-blue-50 border-blue-200">

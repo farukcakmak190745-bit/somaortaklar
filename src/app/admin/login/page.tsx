@@ -9,7 +9,14 @@ import { AlertCircle, Lock, User } from "lucide-react";
 import { toast } from "sonner";
 
 const ADMIN_USERNAME = "admin";
-const ADMIN_PASSWORD = "admin";
+const PASSWORD_KEY = "adminPassword";
+
+function getStoredPassword(): string {
+  if (typeof window !== "undefined") {
+    return localStorage.getItem(PASSWORD_KEY) || "admin";
+  }
+  return "admin";
+}
 
 export default function LoginPage() {
   const router = useRouter();
@@ -31,7 +38,8 @@ export default function LoginPage() {
     setError("");
     setLoading(true);
 
-    if (username === ADMIN_USERNAME && password === ADMIN_PASSWORD) {
+    const storedPassword = getStoredPassword();
+    if (username === ADMIN_USERNAME && password === storedPassword) {
       localStorage.setItem("adminToken", "valid");
       localStorage.setItem("adminAuth", "true");
       document.cookie = "adminAuth=true; path=/; max-age=86400";

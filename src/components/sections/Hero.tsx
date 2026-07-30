@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { Phone, MessageCircle } from "lucide-react";
 import Link from "next/link";
+import Image from "next/image";
 import { getHero, getSliders } from "@/lib/db-local";
 import type { Slider } from "@/types";
 
@@ -104,10 +105,13 @@ export default function Hero() {
     return (
       <section id="home" className="relative min-h-screen flex items-center justify-center overflow-hidden">
         <div className="absolute inset-0">
-          <img 
+          <Image 
             src="https://images.unsplash.com/photo-1621922688158-5092bdb99b12?w=1920&q=80"
             alt="Soma Çekici Yol Yardım"
-            className="w-full h-full object-cover object-center"
+            fill
+            className="object-cover object-center"
+            priority
+            unoptimized
           />
           <div className="absolute inset-0 bg-gradient-to-br from-navy-950/80 via-navy-900/70 to-navy-950/80" />
         </div>
@@ -119,11 +123,14 @@ export default function Hero() {
   return (
     <section id="home" className="relative min-h-screen flex items-center justify-center overflow-hidden">
       <div className="absolute inset-0 transition-opacity duration-1000">
-        <img
+        <Image
           key={currentSlider?.imageUrl}
           src={currentSlider?.imageUrl || "https://images.unsplash.com/photo-1621922688158-5092bdb99b12?w=1920&q=80"}
           alt={hero.title || "Soma Çekici"}
-          className="w-full h-full object-cover object-center"
+          fill
+          className="object-cover object-center"
+          priority
+          unoptimized
         />
         <div className="absolute inset-0 bg-gradient-to-br from-navy-950/80 via-navy-900/70 to-navy-950/80" />
       </div>
