@@ -42,7 +42,7 @@ export default function Contact() {
   ];
 
   return (
-    <section id="contact" className="py-32 bg-gradient-to-b from-blue-900/90 via-navy-900/85 to-blue-900/90">
+    <section id="contact" className="py-32 bg-gradient-to-b from-navy-950/90 via-navy-900/85 to-navy-950/90">
       <div className="container mx-auto px-4 md:px-6">
         <motion.div
           initial={{ opacity: 0, y: -20 }}
@@ -103,7 +103,7 @@ export default function Contact() {
             <div className="flex flex-col sm:flex-row gap-4">
               <a
                 href={`tel:+90${contact.phone.replace(/\s/g, "")}`}
-                className="flex items-center justify-center space-x-2 bg-blue-700 hover:bg-blue-800 text-white px-8 py-4 rounded-xl font-semibold text-lg transition-all duration-300 shadow-xl hover:shadow-2xl"
+                className="flex items-center justify-center space-x-2 bg-amber-500 hover:bg-amber-600 text-white px-8 py-4 rounded-xl font-semibold text-lg transition-all duration-300 shadow-xl hover:shadow-2xl"
               >
                 <span>Hemen Ara</span>
               </a>
@@ -201,7 +201,7 @@ export default function Contact() {
 
               <button
                 type="submit"
-                className="w-full bg-blue-700 hover:bg-blue-800 text-white py-4 rounded-xl font-semibold text-lg transition-all duration-300 flex items-center justify-center space-x-2 hover:shadow-xl"
+                className="w-full bg-amber-500 hover:bg-amber-600 text-white py-4 rounded-xl font-semibold text-lg transition-all duration-300 flex items-center justify-center space-x-2 hover:shadow-xl"
               >
                 <Send className="w-5 h-5" />
                 <span>Gönder</span>

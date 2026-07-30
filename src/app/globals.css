@@ -2,38 +2,48 @@
 
 @theme {
   --color-background: #ffffff;
-  --color-foreground: #0c4a6e;
+  --color-foreground: #172554;
   --color-card: #ffffff;
-  --color-card-foreground: #0c4a6e;
+  --color-card-foreground: #172554;
   --color-popover: #ffffff;
-  --color-popover-foreground: #0c4a6e;
-  --color-primary: #0c4a6e;
+  --color-popover-foreground: #172554;
+  --color-primary: #1D4ED8;
   --color-primary-foreground: #ffffff;
-  --color-secondary: #f0f9ff;
-  --color-secondary-foreground: #0c4a6e;
-  --color-muted: #f0f9ff;
-  --color-muted-foreground: #075985;
-  --color-accent: #0ea5e9;
+  --color-secondary: #EFF6FF;
+  --color-secondary-foreground: #172554;
+  --color-muted: #EFF6FF;
+  --color-muted-foreground: #1E40AF;
+  --color-accent: #F59E0B;
   --color-accent-foreground: #ffffff;
   --color-destructive: #ef4444;
   --color-destructive-foreground: #ffffff;
-  --color-border: #e0f2fe;
-  --color-input: #e0f2fe;
-  --color-ring: #0ea5e9;
+  --color-border: #BFDBFE;
+  --color-input: #BFDBFE;
+  --color-ring: #3B82F6;
   --color-gold: #C9A227;
   --color-gold-light: #E8D5A3;
-  --color-navy-50: #f0f9ff;
-  --color-navy-100: #e0f2fe;
-  --color-navy-200: #bae6fd;
-  --color-navy-300: #7dd3fc;
-  --color-navy-400: #38bdf8;
-  --color-navy-500: #0ea5e9;
-  --color-navy-600: #0c4a6e;
-  --color-navy-700: #075985;
-  --color-navy-800: #0c4a6e;
-  --color-navy-900: #0c4a6e;
-  --color-navy-950: #082f49;
-
+  --color-navy-50: #EFF6FF;
+  --color-navy-100: #DBEAFE;
+  --color-navy-200: #BFDBFE;
+  --color-navy-300: #93C5FD;
+  --color-navy-400: #60A5FA;
+  --color-navy-500: #3B82F6;
+  --color-navy-600: #1D4ED8;
+  --color-navy-700: #1E40AF;
+  --color-navy-800: #1E3A8A;
+  --color-navy-900: #172554;
+  --color-navy-950: #0F172A;
+  --color-amber-50: #FFFBEB;
+  --color-amber-100: #FEF3C7;
+  --color-amber-200: #FDE68A;
+  --color-amber-300: #FCD34D;
+  --color-amber-400: #FBBF24;
+  --color-amber-500: #F59E0B;
+  --color-amber-600: #D97706;
+  --color-amber-700: #B45309;
+  --color-amber-800: #92400E;
+  --color-amber-900: #78350F;
+  --color-amber-950: #451A03;
   --font-sans: "Inter", system-ui, -apple-system, sans-serif;
 }
 
@@ -41,26 +51,24 @@ body {
   @apply bg-background text-foreground font-sans antialiased;
 }
 
-/* Custom scrollbar */
 ::-webkit-scrollbar {
   width: 10px;
   height: 10px;
 }
 
 ::-webkit-scrollbar-track {
-  background: #f0f9ff;
+  background: #EFF6FF;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #0ea5e9;
+  background: #3B82F6;
   border-radius: 5px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #0c4a6e;
+  background: #1D4ED8;
 }
 
-/* Smooth scroll */
 html {
   scroll-behavior: smooth;
 }

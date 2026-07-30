@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
-import { Menu, X, Truck } from "lucide-react";
+import { Menu, X, Truck, Phone } from "lucide-react";
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
@@ -111,9 +111,9 @@ export default function Navbar() {
             <Link
               href="#contact"
               onClick={() => setIsOpen(false)}
-              className="bg-blue-700 hover:bg-blue-800 text-white px-6 py-2.5 rounded-full font-medium transition-all duration-200 flex items-center justify-center space-x-2 shadow-lg hover:shadow-xl"
+              className="bg-amber-500 hover:bg-amber-600 text-white px-6 py-2.5 rounded-full font-medium transition-all duration-200 flex items-center justify-center space-x-2 shadow-lg hover:shadow-xl"
             >
-              <Truck className="w-5 h-5" />
+              <Phone className="w-5 h-5" />
               <span>Hemen Ara</span>
             </Link>
           </div>
@@ -155,9 +155,9 @@ export default function Navbar() {
               <Link
                 href="#contact"
                 onClick={() => setIsOpen(false)}
-                className="bg-blue-700 hover:bg-blue-800 text-white px-6 py-3 rounded-full font-medium transition-all duration-200 flex items-center justify-center space-x-2 shadow-lg hover:shadow-xl"
+                className="bg-amber-500 hover:bg-amber-600 text-white px-6 py-3 rounded-full font-medium transition-all duration-200 flex items-center justify-center space-x-2 shadow-lg hover:shadow-xl"
               >
-                <Truck className="w-5 h-5" />
+                <Phone className="w-5 h-5" />
                 <span>Hemen Ara</span>
               </Link>
             </div>

@@ -25,7 +25,7 @@ export default function Services() {
 
   if (!mounted) {
     return (
-      <section id="services" className="py-32 bg-gradient-to-b from-blue-900/90 via-navy-900/85 to-blue-900/90">
+    <section id="services" className="py-32 bg-gradient-to-b from-navy-900/95 via-navy-950/90 to-navy-900/95">
         <div className="container mx-auto px-4 md:px-6">
           <motion.div
             initial={{ opacity: 0, y: -20 }}
@@ -68,7 +68,7 @@ export default function Services() {
   };
 
   return (
-    <section id="services" className="py-32 bg-gradient-to-b from-blue-900/90 via-navy-900/85 to-blue-900/90">
+    <section id="services" className="py-32 bg-gradient-to-b from-navy-900/95 via-navy-950/90 to-navy-900/95">
       <div className="container mx-auto px-4 md:px-6">
         {/* Section Header */}
         <motion.div
@@ -139,7 +139,7 @@ export default function Services() {
                 {/* CTA Button */}
                 <a
                   href={`tel:+905071045054`}
-                  className="w-full bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white py-4 rounded-xl font-semibold text-base transition-all duration-300 flex items-center justify-center space-x-2 hover:shadow-lg border border-blue-500/50 block"
+                  className="w-full bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-600 hover:to-amber-700 text-white py-4 rounded-xl font-semibold text-base transition-all duration-300 flex items-center justify-center space-x-2 hover:shadow-lg border border-amber-400/50 block"
                 >
                   <Phone className="w-5 h-5" />
                   <span>Hemen ara ↗</span>

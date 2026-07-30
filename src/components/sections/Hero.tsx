@@ -37,7 +37,6 @@ export default function Hero() {
     loadMounted();
   }, []);
 
-  // Auto slide
   useEffect(() => {
     if (!mounted || sliders.length === 0) return;
 
@@ -48,10 +47,60 @@ export default function Hero() {
     return () => clearInterval(interval);
   }, [mounted, sliders]);
 
+  const content = (
+    <div className="relative z-10 container mx-auto px-4 md:px-6 text-center">
+      <motion.div
+        initial={{ opacity: 0, y: -20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.8 }}
+        className="max-w-4xl mx-auto space-y-8"
+      >
+        <motion.h1
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.2 }}
+          className="text-5xl md:text-6xl lg:text-7xl font-bold text-white leading-tight uppercase tracking-wide"
+        >
+          {hero.title || "SOMA ÇEKİCİ & YOL YARDIM HİZMETLERİ"}
+        </motion.h1>
 
+        <motion.p
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.4 }}
+          className="text-xl md:text-2xl text-blue-100 max-w-2xl mx-auto uppercase tracking-wide"
+        >
+          {hero.subtitle || "Soma Bölgesinde 7/24 Oto Çekici, Oto Kurtarma ve Yol Yardım Hizmeti"}
+        </motion.p>
+
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.6 }}
+          className="flex flex-col sm:flex-row items-center justify-center gap-4 mt-10"
+        >
+          <Link
+            href="tel:+905071045054"
+            className="inline-flex items-center justify-center space-x-3 bg-amber-500 hover:bg-amber-600 text-white px-12 py-5 rounded-2xl font-bold text-lg uppercase tracking-wide transition-all duration-300 shadow-2xl hover:shadow-4xl hover:scale-105"
+          >
+            <Phone className="w-6 h-6" />
+            <span>Hemen Ara</span>
+          </Link>
+          <Link
+            href="https://wa.me/905071045054"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center justify-center space-x-3 bg-green-600 hover:bg-green-700 text-white px-12 py-5 rounded-2xl font-bold text-lg uppercase tracking-wide transition-all duration-300 shadow-2xl hover:shadow-4xl hover:scale-105"
+          >
+            <MessageCircle className="w-6 h-6" />
+            <span>WhatsApp</span>
+          </Link>
+        </motion.div>
+      </motion.div>
+    </div>
+  );
 
   if (!mounted) {
-    // Return server-side rendered HTML for initial hydration
     return (
       <section id="home" className="relative min-h-screen flex items-center justify-center overflow-hidden">
         <div className="absolute inset-0">
@@ -60,68 +109,15 @@ export default function Hero() {
             alt="Soma Çekici Yol Yardım"
             className="w-full h-full object-cover object-center"
           />
-          <div className="absolute inset-0 bg-gradient-to-br from-blue-900/70 via-navy-900/60 to-blue-900/70" />
+          <div className="absolute inset-0 bg-gradient-to-br from-navy-950/80 via-navy-900/70 to-navy-950/80" />
         </div>
-
-        <div className="relative z-10 container mx-auto px-4 md:px-6 text-center">
-          <motion.div
-            initial={{ opacity: 0, y: -20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            className="max-w-4xl mx-auto space-y-8"
-          >
-            <motion.h1
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.2 }}
-              className="text-5xl md:text-6xl lg:text-7xl font-bold text-white leading-tight uppercase tracking-wide"
-            >
-              {hero.title || "SOMA ÇEKİCİ & YOL YARDIM HİZMETLERİ"}
-            </motion.h1>
-
-            <motion.p
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.4 }}
-              className="text-xl md:text-2xl text-blue-100 max-w-2xl mx-auto uppercase tracking-wide"
-            >
-              {hero.subtitle || "Soma Bölgesinde 7/24 Oto Çekici, Oto Kurtarma ve Yol Yardım Hizmeti"}
-            </motion.p>
-
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.6 }}
-              className="flex flex-col sm:flex-row items-center justify-center gap-4 mt-10"
-            >
-              <Link
-                href="tel:+905071045054"
-                className="inline-flex items-center justify-center space-x-3 bg-blue-700 hover:bg-blue-800 text-white px-12 py-5 rounded-2xl font-bold text-lg uppercase tracking-wide transition-all duration-300 shadow-2xl hover:shadow-4xl hover:scale-105"
-              >
-                <Phone className="w-6 h-6" />
-                <span>Hemen Ara</span>
-              </Link>
-
-              <Link
-                href="https://wa.me/905071045054"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center justify-center space-x-3 bg-green-500 hover:bg-green-600 text-white px-12 py-5 rounded-2xl font-bold text-lg uppercase tracking-wide transition-all duration-300 shadow-2xl hover:shadow-4xl hover:scale-105"
-              >
-                <MessageCircle className="w-6 h-6" />
-                <span>WhatsApp</span>
-              </Link>
-            </motion.div>
-          </motion.div>
-        </div>
-
+        {content}
       </section>
     );
   }
 
   return (
     <section id="home" className="relative min-h-screen flex items-center justify-center overflow-hidden">
-      {/* Banner Background Image with Slide Effect */}
       <div className="absolute inset-0 transition-opacity duration-1000">
         <img
           key={currentSlider?.imageUrl}
@@ -129,67 +125,11 @@ export default function Hero() {
           alt={hero.title || "Soma Çekici"}
           className="w-full h-full object-cover object-center"
         />
-        {/* Dark Overlay */}
-        <div className="absolute inset-0 bg-gradient-to-br from-blue-900/70 via-navy-900/60 to-blue-900/70" />
+        <div className="absolute inset-0 bg-gradient-to-br from-navy-950/80 via-navy-900/70 to-navy-950/80" />
       </div>
 
-      {/* Content */}
-      <div className="relative z-10 container mx-auto px-4 md:px-6 text-center">
-        <motion.div
-          initial={{ opacity: 0, y: -20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-          className="max-w-4xl mx-auto space-y-8"
-        >
-          {/* Main Title */}
-          <motion.h1
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
-            className="text-5xl md:text-6xl lg:text-7xl font-bold text-white leading-tight uppercase tracking-wide"
-          >
-            {hero.title || "SOMA ÇEKİCİ & YOL YARDIM HİZMETLERİ"}
-          </motion.h1>
+      {content}
 
-          {/* Subtitle */}
-          <motion.p
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.4 }}
-            className="text-xl md:text-2xl text-blue-100 max-w-2xl mx-auto uppercase tracking-wide"
-          >
-            {hero.subtitle || "Soma Bölgesinde 7/24 Oto Çekici, Oto Kurtarma ve Yol Yardım Hizmeti"}
-          </motion.p>
-
-          {/* CTA Buttons */}
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.6 }}
-            className="flex flex-col sm:flex-row items-center justify-center gap-4 mt-10"
-          >
-            <Link
-              href="tel:+905071045054"
-              className="inline-flex items-center justify-center space-x-3 bg-blue-700 hover:bg-blue-800 text-white px-12 py-5 rounded-2xl font-bold text-lg uppercase tracking-wide transition-all duration-300 shadow-2xl hover:shadow-4xl hover:scale-105"
-            >
-              <Phone className="w-6 h-6" />
-              <span>Hemen Ara</span>
-            </Link>
-
-            <Link
-              href="https://wa.me/905071045054"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center justify-center space-x-3 bg-green-500 hover:bg-green-600 text-white px-12 py-5 rounded-2xl font-bold text-lg uppercase tracking-wide transition-all duration-300 shadow-2xl hover:shadow-4xl hover:scale-105"
-            >
-              <MessageCircle className="w-6 h-6" />
-              <span>WhatsApp</span>
-            </Link>
-          </motion.div>
-        </motion.div>
-      </div>
-
-      {/* Slider Dots */}
       <div className="absolute bottom-24 left-1/2 transform -translate-x-1/2 z-20 flex items-center space-x-3">
         {sliders.map((_, index) => (
           <button
@@ -197,14 +137,12 @@ export default function Hero() {
             onClick={() => setCurrentIndex(index)}
             className={`w-3 h-3 rounded-full transition-all duration-300 ${
               currentIndex === index
-                ? 'bg-blue-400 w-8'
+                ? 'bg-amber-400 w-8'
                 : 'bg-white/50 hover:bg-white/70'
             }`}
           />
         ))}
       </div>
-
-
     </section>
   );
 }
