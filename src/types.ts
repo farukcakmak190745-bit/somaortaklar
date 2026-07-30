@@ -1,4 +1,3 @@
-// Main Database Type
 export type DB = {
   hero: HeroSection;
   services: Service[];
@@ -13,7 +12,6 @@ export type DB = {
   websiteStatus: WebsiteStatus;
 };
 
-// Hero Section
 export type HeroSection = {
   title: string;
   subtitle: string;
@@ -22,7 +20,6 @@ export type HeroSection = {
   featuredImage?: string;
 };
 
-// Service
 export type Service = {
   id: number;
   title: string;
@@ -34,17 +31,17 @@ export type Service = {
   features: string[];
 };
 
-// Testimonial
 export type Testimonial = {
   id: number;
   name: string;
   text: string;
   rating: number;
   initial: string;
+  location?: string;
+  date?: string;
+  image?: string;
 };
 
-
-// Contact Info
 export type ContactInfo = {
   phone: string;
   phone2: string;
@@ -53,7 +50,6 @@ export type ContactInfo = {
   hours: string;
 };
 
-// Footer Info
 export type FooterInfo = {
   social: {
     instagram?: string;
@@ -68,24 +64,25 @@ export type FooterInfo = {
   keywords?: string[];
 };
 
-// About Section
 export type AboutSection = {
   title: string;
   description: string;
-  stats?: {
-    years: number;
-    services: number;
-    clients: number;
-    satisfaction: number;
-  };
-  image?: string;
-  imageAlt?: string;
+  subtitle?: string;
+  content?: AboutContent;
 };
 
-// Helper types for admin pages
+export type AboutContent = {
+  intro?: string;
+  serviceArea?: string;
+  whyChooseUs?: string[];
+  closing?: string;
+};
+
 export type AboutData = {
   title: string;
   description: string;
+  subtitle?: string;
+  content?: AboutContent;
 };
 
 export type FooterData = {
@@ -108,7 +105,6 @@ export type SEOData = {
   twitterCard?: string;
 };
 
-// Slider
 export type Slider = {
   id: number;
   title: string;
@@ -119,7 +115,6 @@ export type Slider = {
   active: boolean;
 };
 
-// Blog Post
 export type Blog = {
   id: number;
   title: string;
@@ -134,7 +129,6 @@ export type Blog = {
   active: boolean;
 };
 
-// SEO Configuration
 export type SEOConfig = {
   title: string;
   description: string;
@@ -145,7 +139,6 @@ export type SEOConfig = {
   twitterCard?: string;
 };
 
-// Statistics
 export type Statistics = {
   services: number;
   clients: number;
@@ -154,7 +147,6 @@ export type Statistics = {
   active: boolean;
 };
 
-// Website Status
 export type WebsiteStatus = {
   siteNumber?: string;
   closed?: boolean;

@@ -24,7 +24,9 @@ export default function TestimonialsPage() {
     name: "",
     text: "",
     rating: 5,
-    initial: ""
+    initial: "",
+    location: "",
+    date: ""
   });
   const [selectedRating, setSelectedRating] = useState<number | null>(null);
   const [viewMode, setViewMode] = useState<"grid" | "list">("grid");
@@ -37,7 +39,6 @@ export default function TestimonialsPage() {
     setLoading(true);
     try {
       const data = await getTestimonials();
-      await Promise.resolve();
       setTestimonials(data);
     } catch (error) {
       console.error("Error loading testimonials:", error);
@@ -46,7 +47,6 @@ export default function TestimonialsPage() {
     }
   };
 
-  // Initial load
   useEffect(() => {
     loadTestimonials();
   }, []);
@@ -57,25 +57,32 @@ export default function TestimonialsPage() {
       name: "",
       text: "",
       rating: 5,
-      initial: ""
+      initial: "",
+      location: "",
+      date: ""
     });
     setDialogOpen(true);
   };
 
   const openEditDialog = (testimonial: Testimonial) => {
     setEditingTestimonial(testimonial);
-    setFormData(testimonial);
+    setFormData({
+      name: testimonial.name,
+      text: testimonial.text,
+      rating: testimonial.rating,
+      initial: testimonial.initial || "",
+      location: testimonial.location || "",
+      date: testimonial.date || ""
+    });
     setDialogOpen(true);
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-
     if (!formData.name || !formData.text) {
       alert("Lütfen gerekli alanları doldurun");
       return;
     }
-
     try {
       if (editingTestimonial) {
         await updateTestimonial(editingTestimonial.id, formData);
@@ -102,7 +109,6 @@ export default function TestimonialsPage() {
 
   return (
     <div className="space-y-6">
-      {/* Header */}
       <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
         <div>
           <h1 className="text-3xl font-bold text-gray-900">Referanslar</h1>
@@ -114,7 +120,7 @@ export default function TestimonialsPage() {
               variant={viewMode === "grid" ? "default" : "ghost"}
               size="sm"
               onClick={() => setViewMode("grid")}
-              className="h-10 px-4 rounded-l-xl hover:shadow-lg hover:scale-105 active:scale-95 transition-all duration-200"
+              className="h-10 px-4 rounded-l-xl"
             >
               <Grid3x3 className="w-4 h-4" />
             </Button>
@@ -122,22 +128,21 @@ export default function TestimonialsPage() {
               variant={viewMode === "list" ? "default" : "ghost"}
               size="sm"
               onClick={() => setViewMode("list")}
-              className="h-10 px-4 rounded-r-xl hover:shadow-lg hover:scale-105 active:scale-95 transition-all duration-200"
+              className="h-10 px-4 rounded-r-xl"
             >
               <Filter className="w-4 h-4" />
             </Button>
           </div>
-          <Button onClick={openAddDialog} className="h-12 px-6 hover:shadow-lg hover:scale-105 active:scale-95 transition-all duration-200">
+          <Button onClick={openAddDialog} className="h-12 px-6">
             <Plus className="w-5 h-5 mr-2" />
             Yeni Referans Ekle
           </Button>
         </div>
       </div>
 
-      {/* Rating Filter */}
       <Card>
         <CardContent className="p-4">
-          <div className="flex items-center space-x-2">
+          <div className="flex items-center space-x-2 flex-wrap gap-2">
             <span className="text-sm font-medium text-gray-700">Filtrele:</span>
             <Button
               variant={selectedRating === null ? "default" : "outline"}
@@ -154,7 +159,7 @@ export default function TestimonialsPage() {
                 className="h-9 px-4"
               >
                 {Array.from({ length: rating }, (_, i) => (
-                  <Star key={`star-${rating}-${i}`} className="w-4 h-4 fill-gold text-gold" />
+                  <Star key={i} className="w-4 h-4 fill-gold text-gold" />
                 ))}
               </Button>
             ))}
@@ -162,7 +167,6 @@ export default function TestimonialsPage() {
         </CardContent>
       </Card>
 
-      {/* Testimonials Grid */}
       {viewMode === "grid" ? (
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {loading ? (
@@ -193,6 +197,9 @@ export default function TestimonialsPage() {
                   </div>
                   <div className="flex-1">
                     <h3 className="font-semibold text-gray-900">{testimonial.name}</h3>
+                    {testimonial.location && (
+                      <p className="text-sm text-gray-500">{testimonial.location}</p>
+                    )}
                     <div className="flex items-center space-x-1 mt-1">
                       {[...Array(testimonial.rating)].map((_, i) => (
                         <Star key={i} className="w-4 h-4 fill-gold text-gold" />
@@ -203,19 +210,22 @@ export default function TestimonialsPage() {
                     variant="ghost"
                     size="sm"
                     onClick={() => openEditDialog(testimonial)}
-                    className="h-8 px-3 hover:shadow-lg hover:scale-105 active:scale-95 transition-all duration-200"
+                    className="h-8 px-3"
                   >
                     <Edit className="w-4 h-4" />
                   </Button>
                 </div>
-                <p className="text-gray-700 leading-relaxed italic mb-4">
+                <p className="text-gray-700 leading-relaxed italic mb-2">
                   {'"'}{testimonial.text}{'"'}
                 </p>
+                {testimonial.date && (
+                  <p className="text-xs text-gray-400 mb-4">{testimonial.date}</p>
+                )}
                 <Button
                   variant="destructive"
                   size="sm"
                   onClick={() => handleDelete(testimonial.id)}
-                  className="h-8 w-full hover:shadow-lg hover:scale-105 active:scale-95 transition-all duration-200"
+                  className="h-8 w-full"
                 >
                   <Trash2 className="w-4 h-4 mr-2" />
                   Sil
@@ -225,7 +235,6 @@ export default function TestimonialsPage() {
           )}
         </div>
       ) : (
-        /* List View */
         <Card>
           <CardHeader>
             <CardTitle>Referans Listesi</CardTitle>
@@ -253,6 +262,9 @@ export default function TestimonialsPage() {
                       </div>
                       <div className="flex-1 min-w-0">
                         <h3 className="font-semibold text-gray-900">{testimonial.name}</h3>
+                        {testimonial.location && (
+                          <p className="text-sm text-gray-500">{testimonial.location}</p>
+                        )}
                         <div className="flex items-center space-x-1 mt-1">
                           {[...Array(testimonial.rating)].map((_, i) => (
                             <Star key={i} className="w-4 h-4 fill-gold text-gold" />
@@ -261,6 +273,9 @@ export default function TestimonialsPage() {
                         <p className="text-sm text-gray-600 mt-2 italic">
                           {'"'}{testimonial.text}{'"'}
                         </p>
+                        {testimonial.date && (
+                          <p className="text-xs text-gray-400 mt-1">{testimonial.date}</p>
+                        )}
                       </div>
                     </div>
                     <div className="flex items-center space-x-2 flex-shrink-0 ml-4">
@@ -289,7 +304,6 @@ export default function TestimonialsPage() {
         </Card>
       )}
 
-      {/* Add/Edit Dialog */}
       <Dialog open={dialogOpen}>
         <DialogContent
           className="max-w-2xl max-h-[90vh] overflow-y-auto"
@@ -299,21 +313,27 @@ export default function TestimonialsPage() {
             <DialogTitle>{editingTestimonial ? "Referans Düzenle" : "Yeni Referans Ekle"}</DialogTitle>
           </DialogHeader>
           <form onSubmit={handleSubmit} className="space-y-4">
-            <div>
-              <label className="block text-sm font-medium text-gray-700 mb-2">
-                Ad Soyad *
-              </label>
-              <Input
-                value={formData.name}
-                onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                placeholder="Örn: Ahmet Yılmaz"
-                required
-              />
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div>
+                <label className="block text-sm font-medium text-gray-700 mb-2">Ad Soyad *</label>
+                <Input
+                  value={formData.name}
+                  onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+                  placeholder="Örn: Mehmet Kaya"
+                  required
+                />
+              </div>
+              <div>
+                <label className="block text-sm font-medium text-gray-700 mb-2">Konum</label>
+                <Input
+                  value={formData.location || ""}
+                  onChange={(e) => setFormData({ ...formData, location: e.target.value })}
+                  placeholder="Örn: Soma, Manisa"
+                />
+              </div>
             </div>
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-2">
-                Yorum *
-              </label>
+              <label className="block text-sm font-medium text-gray-700 mb-2">Yorum *</label>
               <Textarea
                 value={formData.text}
                 onChange={(e) => setFormData({ ...formData, text: e.target.value })}
@@ -322,10 +342,26 @@ export default function TestimonialsPage() {
                 required
               />
             </div>
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div>
+                <label className="block text-sm font-medium text-gray-700 mb-2">Tarih / Kaynak</label>
+                <Input
+                  value={formData.date || ""}
+                  onChange={(e) => setFormData({ ...formData, date: e.target.value })}
+                  placeholder="Örn: 1 hafta önce · Google yorumu"
+                />
+              </div>
+              <div>
+                <label className="block text-sm font-medium text-gray-700 mb-2">Baş Harfler</label>
+                <Input
+                  value={formData.initial || ""}
+                  onChange={(e) => setFormData({ ...formData, initial: e.target.value })}
+                  placeholder="Örn: MK"
+                />
+              </div>
+            </div>
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-2">
-                Puanlama
-              </label>
+              <label className="block text-sm font-medium text-gray-700 mb-2">Puanlama</label>
               <div className="flex items-center space-x-2">
                 {[1, 2, 3, 4, 5].map((rating) => (
                   <button
@@ -344,11 +380,7 @@ export default function TestimonialsPage() {
               </div>
             </div>
             <DialogFooter>
-              <Button
-                type="button"
-                variant="outline"
-                onClick={() => setDialogOpen(false)}
-              >
+              <Button type="button" variant="outline" onClick={() => setDialogOpen(false)}>
                 İptal
               </Button>
               <Button type="submit" className="h-12 px-6 bg-green-600 hover:bg-green-700 text-white">

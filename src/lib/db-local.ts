@@ -73,100 +73,70 @@ const defaultDB: DB = {
   testimonials: [
     {
       id: 1,
-      name: "Ahmet Yılmaz",
-      text: "Çok profesyonel bir ekiple çalıştım. Aracımı 15 dakikada yerinde aldırabildim. Kesinlikle tavsiye ederim!",
-      rating: 5,
-      initial: "AY"
-    },
-    {
-      id: 2,
-      name: "Mehmet Demir",
-      text: "Gece yarısı acil durumda aradım ve gerçekten çok hızlı geldiler. Çok memnun kaldım.",
-      rating: 5,
-      initial: "MD"
-    },
-    {
-      id: 3,
-      name: "Ayşe Kaya",
-      text: "Fiyatları makul ve hizmetleri çok profesyonel. Bir daha buralara uğrayacağım.",
-      rating: 5,
-      initial: "AK"
-    },
-    {
-      id: 4,
-      name: "Caner Erkin",
-      text: "Trafik yardımı için çağırdım ve 5 dakika içinde geldiler. Harika bir hizmet!",
-      rating: 5,
-      initial: "CE"
-    },
-    {
-      id: 5,
-      name: "Elif Özkan",
-      text: "En hızlı çekici hizmeti. Her zaman güvendiğim bir yer.",
-      rating: 5,
-      initial: "EO"
-    },
-    {
-      id: 6,
-      name: "Osman Yıldız",
-      text: "Paketi profesyonelce yapıldı. Teşekkür ederim!",
-      rating: 5,
-      initial: "OY"
-    },
-    {
-      id: 7,
-      name: "Zeynep Demir",
-      text: "Çok profesyonel ve güler yüzlü personeli beğendim. Her zaman yardımcı oluyorlar.",
-      rating: 5,
-      initial: "ZD"
-    },
-    {
-      id: 8,
-      name: "Murat Kaya",
-      text: "Aracım patinaj yaptı, çekici geldi ve 10 dakikada yerinde aldı. Mükemmel!",
+      name: "Mehmet Kaya",
+      location: "Soma, Manisa",
+      date: "1 hafta önce · Google yorumu",
+      text: "Gece 01.00'de Soma'da aracım hareket edemez hale geldi. Soma Ortaklar Yol Yardım'ı aradım, 15 dakika içinde çekici kapımdaydı. Soma çekici hizmeti bu kadar hızlı olur diye beklemiyordum. Ekip hem güler yüzlü hem de çok profesyoneldi, kesinlikle tavsiye ediyorum.",
       rating: 5,
       initial: "MK"
     },
     {
-      id: 9,
-      name: "Ayşe Çelik",
-      text: "Acil durumda her zaman yanlarında oldukları için çok teşekkür ederim. Güvenilir bir ekip.",
+      id: 2,
+      name: "Zeynep Arslan",
+      location: "Soma, Manisa",
+      date: "3 hafta önce · Google yorumu",
+      text: "Soma'da uzun süredir araç kullanıyorum, daha önce farklı firmalar denedim. Soma yol yardım konusunda Soma Ortaklar ile karşılaştırılacak başka bir firma görmedim. Aküm bittiğinde aradım, gelip yerinde hallettiler. Fiyatı da dürüst, sürpriz çıkmıyor.",
       rating: 5,
-      initial: "AC"
+      initial: "ZA"
     },
     {
-      id: 10,
-      name: "Hakan Yılmaz",
-      text: "Şehir içi çok yoğun saatlerde bile hızlı geldiler. Memnun kaldım!",
+      id: 3,
+      name: "Serkan Çelik",
+      location: "Akhisar, Manisa",
+      date: "2 hafta önce · Google yorumu",
+      text: "Akhisar'da kaza yaptım, çok stresliydim ne yapacağımı bilemedim. Akhisar oto çekici diye aratınca Soma Ortaklar Yol Yardım çıktı. Aradım, sakin ve net konuştular, kısa sürede geldiler. Aracımı hasarsız servise teslim ettiler. Akhisar ve çevresinde bu işi en iyi onlar yapıyor.",
       rating: 5,
-      initial: "HY"
+      initial: "SC"
     },
     {
-      id: 11,
-      name: "Selin Demir",
-      text: "Müşteri hizmetleri çok iyiydi. Sorularıma net cevap verdiler.",
+      id: 4,
+      name: "Hüseyin Baş",
+      location: "Kınık, İzmir",
+      date: "1 ay önce · Google yorumu",
+      text: "Kınık'tan Soma'ya geçerken lastiğim patladı, yolun ortasında mahsur kaldım. Kınık yol yardım diye aradım, Soma Ortaklar'a bağlandım. Düşündüğümden çok daha kısa sürede geldiler. Lastik değişimini hızlıca yaptılar, yoluma devam edebildim. Kınık ve çevresi için güvenle öneririm.",
       rating: 5,
-      initial: "SD"
+      initial: "HB"
     },
     {
-      id: 12,
-      name: "Emre Özkan",
-      text: "Fiyat transparent. Hiçbir ekstra ücret talep etmediler. Güvenilir!",
+      id: 5,
+      name: "Fatih Yıldız",
+      location: "Savaştepe, Balıkesir",
+      date: "1 ay önce · Google yorumu",
+      text: "Savaştepe'de gece aracım yolda kaldı, çevrede çekici bulamadım. Soma yol yardım diye aradım, Soma Ortaklar hemen yola çıktı. Savaştepe gibi şehir merkezinden uzak bir noktaya bu kadar hızlı gelmelerini beklemiyordum. Gerçekten güvenilir bir ekip, tekrar ihtiyacım olsa yine ararım.",
       rating: 5,
-      initial: "EO"
+      initial: "FY"
+    },
+    {
+      id: 6,
+      name: "Nurcan Özer",
+      location: "Kırkağaç, Manisa",
+      date: "2 ay önce · Google yorumu",
+      text: "Kırkağaç'ta yakıtım bitti, ne yapacağımı bilemedim. Kırkağaç yol yardım diye internette arama yaptım, Soma Ortaklar Yol Yardım'a ulaştım. Soma'dan Kırkağaç'a kadar geldiler, yakıt ikmali yaptılar. Kırkağaç çekici ve yol yardım için bu firmayı rahatlıkla önerebilirim.",
+      rating: 5,
+      initial: "NO"
     }
   ],
   contact: {
-    phone: "+90 555 123 45 67",
-    phone2: "+90 555 765 43 21",
+    phone: "0507 104 50 54",
+    phone2: "0507 104 50 54",
     email: "info@somaortaklaryolyardim.com",
-    address: "Somaras Mah. Cadde No: 123, Sakarya",
+    address: "Turgutalp Mh. Bergama Cd. Özgür Sk. No:11/A SOMA/MANİSA",
     hours: "24 Saat Hizmet Veriyoruz"
   },
   footer: {
     social: {
       instagram: "https://instagram.com",
-      whatsapp: "https://wa.me/905551234567",
+      whatsapp: "https://wa.me/905071045054",
       facebook: "https://facebook.com"
     },
     quickLinks: [
@@ -176,11 +146,27 @@ const defaultDB: DB = {
       "Blog",
       "Kariyer",
       "SSS"
-    ]
+    ],
+    footerText: "Soma oto çekici ve Soma yol yardım hizmetlerinde bölgenin güvenilir adresi. Manisa Soma merkezli çekici firmamız; Soma çekici, Akhisar çekici, Kınık çekici, Kırkağaç çekici ve Savaştepe çekici hizmetleriyle 7/24 yolunuzda. Aracınız arızalandığında, kaza yaptığınızda veya yolda kaldığınızda Soma oto çekici hattımız tek aramada yanınızda. Oto çekici, oto kurtarma, araç kurtarma, yol yardım, akü takviyesi ve lastik değişimi hizmetleri için Soma Ortaklar Yol Yardım'ı arayın.",
+    keywords: ["Soma çekici", "Soma oto çekici", "Soma yol yardım", "Manisa çekici"]
   },
   about: {
     title: "Hakkımızda",
-    description: "Soma Ortaklar Yolyardım olarak 10 yılı aşkın süredir çekici ve yolyardım hizmetleri sunuyoruz"
+    description: "Soma'nın en güvenilir oto çekici ve yol yardım firmasıyız",
+    subtitle: "Biz Kimiz?",
+    content: {
+      intro: "Soma Ortaklar Yol Yardım olarak, Manisa'nın Soma ilçesinde kurulu profesyonel oto çekici ve yol yardım firmasıyız. Soma çekici, Soma oto çekici ve Soma yol yardım hizmetlerinde bölgenin en güvenilir ismi olarak yıllardır araç sahiplerinin yanında oluyoruz. En zor anlarda, en hızlı çözümü sunmak için 7 gün 24 saat yoldayız.",
+      serviceArea: "Soma merkezli çekici hizmetimizle Manisa'nın tüm ilçelerini kapsayan geniş bir hizmet ağına sahibiz. Soma, Ahmetli, Akhisar, Alaşehir, Demirci, Gölmarmara, Gördes, Kınık, Kırkağaç, Köprübaşı, Salihli, Sarıgöl, Saruhanlı, Şehzadeler, Turgutlu, Yunusemre ve Savaştepe genelinde profesyonel çekici ekiplerimiz her an hizmete hazır beklemektedir.",
+      whyChooseUs: [
+        "7/24 Soma Çekici Hizmeti: Gece gündüz, hafta sonu ve resmi tatillerde ekibimiz her an yolda.",
+        "Geniş Hizmet Ağı: Soma ve Manisa ilçelerinin tamamına ortalama 20–30 dakika içinde ulaşım.",
+        "Profesyonel Çekici Ekibi: Lisanslı, deneyimli ve alanında uzman oto çekici operatörleri.",
+        "Şeffaf Fiyatlandırma: Gizli ücret yok; anlaşılan fiyat, ödenen fiyattır.",
+        "Modern Çekici Araç Filosu: Her türlü kara taşıtına uygun, son teknoloji çekici araçlar.",
+        "Hasarsız Taşıma Garantisi: Aracınız bize teslim edildiği gibi teslim edilir."
+      ],
+      closing: "Soma çekici, Soma oto çekici, araç kurtarma, lastik değişimi, akü takviyesi veya yol yardım hizmetlerine ihtiyaç duyduğunuz her an Soma Ortaklar Yol Yardım olarak hemen yanınızdayız. Soma ve Manisa genelinde oto çekici denildiğinde akla gelen ilk isim olmaktan gurur duyuyoruz."
+    }
   },
   sliders: [
     {
@@ -453,7 +439,8 @@ export function getAbout(): DB['about'] {
   const db = getDB();
   return db.about || {
     title: "Hakkımızda",
-    description: "Hakkımızda bilgisi..."
+    description: "Soma'nın en güvenilir oto çekici ve yol yardım firmasıyız",
+    subtitle: "Biz Kimiz?"
   };
 }
 
@@ -473,7 +460,9 @@ export function getFooter(): DB['footer'] {
       whatsapp: "",
       facebook: ""
     },
-    quickLinks: []
+    quickLinks: [],
+    footerText: "",
+    keywords: []
   };
 }
 

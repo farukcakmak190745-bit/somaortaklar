@@ -5,7 +5,7 @@ import Link from "next/link";
 import {
   Menu, X,
   LayoutDashboard, Users, ClipboardList, Settings, Phone, LogOut,
-  Search, Info, Shield, MousePointer, Image
+  Search, Info, MousePointer, Image
 } from "lucide-react";
 import { usePathname } from "next/navigation";
 import { useAdminAuth } from "@/hooks/use-admin-auth";
@@ -18,7 +18,6 @@ const menuItems = [
   { name: "SEO Ayarları", href: "/admin/seo", icon: Search },
   { name: "Hakkımızda", href: "/admin/about", icon: Info },
   { name: "Footer Ayarları", href: "/admin/footer", icon: MousePointer },
-  { name: "Site Durumu", href: "/admin/website-status", icon: Shield },
   { name: "İletişim", href: "/admin/contact", icon: Phone },
   { name: "Ayarlar", href: "/admin/settings", icon: Settings },
 ];

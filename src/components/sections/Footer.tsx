@@ -10,15 +10,18 @@ import { getFooter } from "@/lib/db-local";
 export default function Footer() {
   const router = useRouter();
   const [isAuthenticated, setIsAuthenticated] = useState(false);
-  const [footer, setFooter] = useState<ReturnType<typeof getFooter>>({ social: { instagram: "", whatsapp: "", facebook: "" }, quickLinks: [], contactInfo: undefined });
-
+  const [footer, setFooter] = useState<ReturnType<typeof getFooter>>({
+    social: {},
+    quickLinks: [],
+    footerText: "",
+    keywords: []
+  });
 
   useEffect(() => {
     const loadInitialData = async () => {
       if (typeof window !== 'undefined') {
         setIsAuthenticated(localStorage.getItem('adminAuth') === 'true');
       }
-
       setFooter(getFooter());
     };
     loadInitialData();
@@ -38,11 +41,16 @@ export default function Footer() {
     { name: "Facebook", href: footer.social?.facebook || "#", icon: Facebook, color: "hover:bg-blue-600" }
   ];
 
+  const serviceRegions = [
+    "Soma", "Ahmetli", "Akhisar", "Alaşehir", "Demirci", "Gölmarmara",
+    "Gördes", "Kınık", "Kırkağaç", "Köprübaşı", "Salihli", "Sarıgöl",
+    "Saruhanlı", "Şehzadeler", "Turgutlu", "Yunusemre", "Savaştepe"
+  ];
+
   return (
     <footer className="bg-navy-950 text-navy-300">
       <div className="container mx-auto px-4 md:px-6 py-16">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-          {/* Admin Link */}
           {isAuthenticated && (
             <div className="lg:col-span-4 border-b border-navy-800 pb-6 mb-6">
               <Link
@@ -55,7 +63,6 @@ export default function Footer() {
             </div>
           )}
 
-          {/* Brand */}
           <div className="space-y-2">
             <div className="text-base font-bold">
               <span className="text-navy-400">Soma</span>
@@ -63,7 +70,7 @@ export default function Footer() {
               <span className="text-navy-400">Yolyardım</span>
             </div>
             <p className="text-navy-300 text-sm leading-relaxed">
-              {footer.footerText || "Soma oto çekici ve Soma yol yardım hizmetlerinde bölgenin güvenilir adresi. Manisa Soma merkezli çekici firmamız; Soma çekici, Akhisar çekici, Kınık çekici, Kırkağaç çekici ve Savaştepe çekici hizmetleriyle 7/24 yolunuzda. Aracınız arızalandığında, kaza yaptığınızda veya yolda kaldığınızda Soma oto çekici hattımız tek aramada yanınızda. Oto çekici, oto kurtarma, araç kurtarma, yol yardım, akü takviyesi ve lastik değişimi hizmetleri için Soma Ortaklar Yol Yardım'ı arayın."}
+              {footer.footerText || "Soma oto çekici ve Soma yol yardım hizmetlerinde bölgenin güvenilir adresi."}
             </p>
             <a
               href="tel:+905071045054"
@@ -72,35 +79,21 @@ export default function Footer() {
               📞 Levent Yetim (0507 104 50 54)
             </a>
             <p className="text-navy-500 text-xs leading-relaxed">
-              {footer.keywords?.join(" · ") || "Soma çekici · Soma oto çekici · Soma yol yardım · Manisa çekici"}
+              {(footer.keywords && footer.keywords.length > 0 ? footer.keywords : ["Soma çekici", "Soma oto çekici", "Soma yol yardım", "Manisa çekici"]).join(" · ")}
             </p>
           </div>
 
-          {/* Quick Links */}
           <div>
             <h3 className="text-base font-semibold mb-3 text-navy-400">Hizmet Bölgeleri</h3>
             <div className="flex flex-wrap gap-2">
-              <span className="px-2.5 py-1 bg-navy-800/50 text-navy-300 text-xs rounded-full">Soma</span>
-              <span className="px-2.5 py-1 bg-navy-800/50 text-navy-300 text-xs rounded-full">Ahmetli</span>
-              <span className="px-2.5 py-1 bg-navy-800/50 text-navy-300 text-xs rounded-full">Akhisar</span>
-              <span className="px-2.5 py-1 bg-navy-800/50 text-navy-300 text-xs rounded-full">Alaşehir</span>
-              <span className="px-2.5 py-1 bg-navy-800/50 text-navy-300 text-xs rounded-full">Demirci</span>
-              <span className="px-2.5 py-1 bg-navy-800/50 text-navy-300 text-xs rounded-full">Gölmarmara</span>
-              <span className="px-2.5 py-1 bg-navy-800/50 text-navy-300 text-xs rounded-full">Gördes</span>
-              <span className="px-2.5 py-1 bg-navy-800/50 text-navy-300 text-xs rounded-full">Kınık</span>
-              <span className="px-2.5 py-1 bg-navy-800/50 text-navy-300 text-xs rounded-full">Kırkağaç</span>
-              <span className="px-2.5 py-1 bg-navy-800/50 text-navy-300 text-xs rounded-full">Köprübaşı</span>
-              <span className="px-2.5 py-1 bg-navy-800/50 text-navy-300 text-xs rounded-full">Salihli</span>
-              <span className="px-2.5 py-1 bg-navy-800/50 text-navy-300 text-xs rounded-full">Sarıgöl</span>
-              <span className="px-2.5 py-1 bg-navy-800/50 text-navy-300 text-xs rounded-full">Saruhanlı</span>
-              <span className="px-2.5 py-1 bg-navy-800/50 text-navy-300 text-xs rounded-full">Şehzadeler</span>
-              <span className="px-2.5 py-1 bg-navy-800/50 text-navy-300 text-xs rounded-full">Turgutlu</span>
-              <span className="px-2.5 py-1 bg-navy-800/50 text-navy-300 text-xs rounded-full">Yunusemre</span>
-              <span className="px-2.5 py-1 bg-navy-800/50 text-navy-300 text-xs rounded-full">Savaştepe</span>
+              {serviceRegions.map((region) => (
+                <span key={region} className="px-2.5 py-1 bg-navy-800/50 text-navy-300 text-xs rounded-full">
+                  {region}
+                </span>
+              ))}
             </div>
           </div>
 
-          {/* Contact Info */}
           <div>
             <h3 className="text-base font-semibold mb-3 text-navy-400">İletişim</h3>
             <ul className="space-y-3">
@@ -140,7 +133,6 @@ export default function Footer() {
             </ul>
           </div>
 
-          {/* Social Media */}
           <div>
             <h3 className="text-base font-semibold mb-3 text-navy-400">Bizi Takip Edin</h3>
             <div className="flex space-x-3">
@@ -159,7 +151,6 @@ export default function Footer() {
             </div>
           </div>
 
-          {/* Logout Button */}
           {isAuthenticated && (
             <div className="border-t border-navy-800 pt-6">
               <button
@@ -173,7 +164,6 @@ export default function Footer() {
           )}
         </div>
 
-        {/* Bottom Bar */}
         <div className="border-t border-navy-800 mt-8 pt-6 text-center">
           <p className="text-blue-400 text-xs">
             © 2024 Soma Ortaklar Yol Yardım. Tüm hakları saklıdır.

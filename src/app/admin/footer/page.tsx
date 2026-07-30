@@ -29,6 +29,8 @@ type FooterData = {
     address?: string;
     hours?: string;
   };
+  footerText?: string;
+  keywords?: string[];
 };
 
 export default function FooterPage() {
@@ -70,8 +72,8 @@ export default function FooterPage() {
     if (!footer) return;
     setSaving(true);
     try {
-      const { social, quickLinks } = footer;
-      await updateFooter({ social, quickLinks } as FooterInfo);
+      const { social, quickLinks, footerText, keywords } = footer;
+      await updateFooter({ social, quickLinks, footerText, keywords } as FooterInfo);
       toast.success("Footer ayarları başarıyla kaydedildi!");
     } catch (error) {
       console.error("Error saving footer:", error);
@@ -239,6 +241,75 @@ export default function FooterPage() {
               className="w-full"
             >
               Link Ekle
+            </Button>
+          </div>
+        </CardContent>
+      </Card>
+
+      {/* Footer Text */}
+      <Card>
+        <CardHeader>
+          <CardTitle>Footer Metni</CardTitle>
+        </CardHeader>
+        <CardContent>
+          <Textarea
+            value={footer?.footerText || ""}
+            onChange={(e) => {
+              if (!footer) return;
+              setFooter({ ...footer, footerText: e.target.value });
+            }}
+            placeholder="Footer açıklama metni..."
+            rows={4}
+          />
+        </CardContent>
+      </Card>
+
+      {/* Keywords */}
+      <Card>
+        <CardHeader>
+          <CardTitle>Anahtar Kelimeler</CardTitle>
+        </CardHeader>
+        <CardContent>
+          <div className="space-y-4">
+            {footer?.keywords?.map((keyword: string, index: number) => (
+              <div key={index} className="flex gap-2">
+                <Input
+                  type="text"
+                  value={keyword}
+                  onChange={(e) => {
+                    if (!footer) return;
+                    const newKeywords = [...footer.keywords!];
+                    newKeywords[index] = e.target.value;
+                    setFooter({ ...footer, keywords: newKeywords });
+                  }}
+                  placeholder="Örn: Soma çekici"
+                />
+                <Button
+                  variant="outline"
+                  size="icon"
+                  onClick={() => {
+                    if (!footer) return;
+                    const newKeywords = footer.keywords?.filter((_: string, i: number) => i !== index);
+                    setFooter({ ...footer, keywords: newKeywords });
+                  }}
+                  className="h-10 w-10"
+                >
+                  <Trash2 className="w-4 h-4" />
+                </Button>
+              </div>
+            ))}
+            <Button
+              variant="outline"
+              onClick={() => {
+                if (!footer) return;
+                setFooter({
+                  ...footer,
+                  keywords: [...(footer.keywords || []), ""]
+                });
+              }}
+              className="w-full"
+            >
+              Anahtar Kelime Ekle
             </Button>
           </div>
         </CardContent>
