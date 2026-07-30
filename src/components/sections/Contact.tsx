@@ -24,7 +24,6 @@ export default function Contact() {
   useEffect(() => {
     const data = getContact();
     setContact(data);
-    setMounted(true);
   }, []);
 
   const handleSubmit = (e: React.FormEvent) => {
