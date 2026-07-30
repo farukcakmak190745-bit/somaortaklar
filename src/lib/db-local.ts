@@ -247,13 +247,23 @@ const defaultDB: DB = {
     }
   ],
   seo: {
-    title: "Çekici & Yolyardım Hizmetleri | Soma Ortaklar",
-    description: "24/7 profesyonel çekici ve yolyardım hizmetleri. Şehir içi ve şehirlerarası çekici, park çekiği, trafik yardımı.",
-    keywords: ["çekici", "yolyardım", "park çekiği", "trafik yardımı", "Soma", "Sakarya"],
-    ogTitle: "Çekici & Yolyardım Hizmetleri",
-    ogDescription: "24/7 profesyonel çekici ve yolyardım hizmetleri. Hemen arayın!",
-    ogImage: "/images/og-image.jpg",
-    twitterCard: "summary_large_image"
+    title: "Çekici & Yol Yardım | Soma - Akhisar - Kırkağaç - Savaştepe - Manisa | Soma Ortaklar",
+    description: "Soma, Akhisar, Kırkağaç, Savaştepe, Manisa'da 7/24 oto çekici, yol yardım ve oto kurtarma hizmeti. Soma çekici, Soma oto çekici ve Soma yol yardım için hemen arayın.",
+    keywords: [
+      "Soma çekici", "Soma oto çekici", "Soma yol yardım", "Soma oto kurtarıcı",
+      "Akhisar çekici", "Akhisar oto çekici", "Akhisar yol yardım",
+      "Kırkağaç çekici", "Kırkağaç oto çekici",
+      "Savaştepe çekici", "Savaştepe oto çekici",
+      "Manisa çekici", "Manisa oto çekici", "Manisa yol yardım",
+      "oto kurtarıcı", "oto çekici", "çekici"
+    ],
+    ogTitle: "Çekici & Yol Yardım | Soma, Akhisar, Kırkağaç, Savaştepe, Manisa",
+    ogDescription: "Soma, Akhisar, Kırkağaç, Savaştepe ve Manisa'da 7/24 profesyonel oto çekici ve yol yardım hizmeti. Hemen arayın!",
+    ogImage: "https://images.unsplash.com/photo-1621922688158-5092bdb99b12?w=1200&q=80",
+    twitterCard: "summary_large_image",
+    serviceAreas: ["Soma", "Akhisar", "Kırkağaç", "Savaştepe", "Manisa", "Kınık"],
+    baseKeywords: ["Çekici", "Oto Çekici", "Yol Yardım", "Oto Kurtarıcı"],
+    generalKeywords: ["Oto Kurtarıcı", "Oto Çekici", "Çekici", "Araç Kurtarma", "Yol Yardım"]
   },
   statistics: {
     services: 5,
@@ -577,6 +587,23 @@ export function resetDB(): void {
   } catch (error) {
     console.error("Error resetting DB:", error);
   }
+}
+
+// Generate all SEO keywords from service areas + base keywords
+export function getAllSEOKeywords(): string[] {
+  const seo = getSEO();
+  const areas = seo.serviceAreas || ["Soma", "Akhisar", "Kırkağaç", "Savaştepe", "Manisa"];
+  const base = seo.baseKeywords || ["Çekici", "Oto Çekici", "Yol Yardım", "Oto Kurtarıcı"];
+  const general = seo.generalKeywords || ["Oto Kurtarıcı", "Oto Çekici", "Çekici", "Araç Kurtarma"];
+  const manual = seo.keywords || [];
+
+  const generated: string[] = [];
+  for (const area of areas) {
+    for (const kw of base) {
+      generated.push(`${area} ${kw}`);
+    }
+  }
+  return [...new Set([...generated, ...general, ...manual])];
 }
 
 // Export all database functions for use in components

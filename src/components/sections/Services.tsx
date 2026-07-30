@@ -82,7 +82,7 @@ export default function Services() {
             Hizmetlerimiz
           </h2>
           <p className="text-xl text-blue-200 max-w-3xl mx-auto leading-relaxed">
-            {contact && `Soma ve Manisa genelinde profesyonel çekici ve yolyardım hizmetleri`}
+            Soma, Akhisar, Kırkağaç, Savaştepe ve Manisa genelinde 7/24 oto çekici, yol yardım ve oto kurtarma hizmetleri
           </p>
         </motion.div>
 

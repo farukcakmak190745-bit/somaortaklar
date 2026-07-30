@@ -137,6 +137,9 @@ export type SEOConfig = {
   ogDescription?: string;
   ogImage?: string;
   twitterCard?: string;
+  serviceAreas?: string[];
+  baseKeywords?: string[];
+  generalKeywords?: string[];
 };
 
 export type Statistics = {
