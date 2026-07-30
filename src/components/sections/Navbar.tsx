@@ -8,43 +8,6 @@ export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
 
-  // Hash linkleri için scroll handler
-  useEffect(() => {
-    const handleHashChange = () => {
-      const hash = window.location.hash;
-      if (hash && hash !== "") {
-        const element = document.getElementById(hash.substring(1));
-        if (element) {
-          element.scrollIntoView({ behavior: "smooth", block: "start" });
-        }
-      }
-    };
-
-    // Sayfa yüklendiğinde ve URL hash'i varsa çalıştır
-    if (window.location.hash) {
-      handleHashChange();
-    }
-
-    window.addEventListener("hashchange", handleHashChange);
-    return () => window.removeEventListener("hashchange", handleHashChange);
-  }, []);
-
-  // Hash URL'leri için handler
-  const handleHashClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string, isHash: boolean) => {
-    e.preventDefault();
-    if (isHash && href !== "") {
-      const element = document.getElementById(href.substring(1));
-      if (element) {
-        element.scrollIntoView({ behavior: "smooth", block: "start" });
-        setIsOpen(false); // Mobil menüyü kapat
-        // URL hash'i güncelle
-        if (window.location.hash !== href) {
-          window.history.pushState(null, "", href);
-        }
-      }
-    }
-  };
-
   useEffect(() => {
     const handleScroll = () => {
       setScrolled(window.scrollY > 50);
@@ -55,10 +18,10 @@ export default function Navbar() {
 
   const navItems = [
     { name: "Anasayfa", href: "/", isHash: false },
-    { name: "Hakkımızda", href: "#hakkimizda", isHash: true },
-    { name: "Hizmetlerimiz", href: "#hizmetlerimiz", isHash: true },
-    { name: "Referanslar", href: "#musteri-yorumlari", isHash: true },
-    { name: "İletişim", href: "#iletisim", isHash: true },
+    { name: "Hakkımızda", href: "/hakkimizda", isHash: false },
+    { name: "Hizmetlerimiz", href: "/hizmetlerimiz", isHash: false },
+    { name: "Referanslar", href: "/musteri-yorumlari", isHash: false },
+    { name: "İletişim", href: "/iletisim", isHash: false },
   ];
 
   return (
@@ -89,28 +52,16 @@ export default function Navbar() {
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center space-x-6">
             {navItems.map((item) => (
-              item.isHash ? (
-                <a
-                  key={item.name}
-                  href={item.href}
-                  onClick={(e) => handleHashClick(e, item.href, item.isHash)}
-                  className="text-white hover:text-blue-300 transition-colors duration-200 font-medium cursor-pointer"
-                >
-                  {item.name}
-                </a>
-              ) : (
-                <Link
-                  key={item.name}
-                  href={item.href}
-                  className="text-white hover:text-blue-300 transition-colors duration-200 font-medium"
-                >
-                  {item.name}
-                </Link>
-              )
+              <Link
+                key={item.name}
+                href={item.href}
+                className="text-white hover:text-blue-300 transition-colors duration-200 font-medium"
+              >
+                {item.name}
+              </Link>
             ))}
             <Link
-              href="#iletisim"
-              onClick={() => setIsOpen(false)}
+              href="/iletisim"
               className="bg-amber-500 hover:bg-amber-600 text-white px-6 py-2.5 rounded-full font-medium transition-all duration-200 flex items-center justify-center space-x-2 shadow-lg hover:shadow-xl"
             >
               <Phone className="w-5 h-5" />
@@ -132,28 +83,17 @@ export default function Navbar() {
           <div className="md:hidden mt-4 pb-4 border-t border-gray-200 pt-4">
             <div className="flex flex-col space-y-3">
               {navItems.map((item) => (
-                item.isHash ? (
-                  <a
-                    key={item.name}
-                    href={item.href}
-                    onClick={(e) => handleHashClick(e, item.href, item.isHash)}
-                    className="text-white hover:text-blue-300 transition-colors duration-200 font-medium text-lg cursor-pointer"
-                  >
-                    {item.name}
-                  </a>
-                ) : (
-                  <Link
-                    key={item.name}
-                    href={item.href}
-                    onClick={() => setIsOpen(false)}
-                    className="text-white hover:text-blue-300 transition-colors duration-200 font-medium text-lg"
-                  >
-                    {item.name}
-                  </Link>
-                )
+                <Link
+                  key={item.name}
+                  href={item.href}
+                  onClick={() => setIsOpen(false)}
+                  className="text-white hover:text-blue-300 transition-colors duration-200 font-medium text-lg"
+                >
+                  {item.name}
+                </Link>
               ))}
               <Link
-                href="#iletisim"
+                href="/iletisim"
                 onClick={() => setIsOpen(false)}
                 className="bg-amber-500 hover:bg-amber-600 text-white px-6 py-3 rounded-full font-medium transition-all duration-200 flex items-center justify-center space-x-2 shadow-lg hover:shadow-xl"
               >
