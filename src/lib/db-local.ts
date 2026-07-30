@@ -124,6 +124,24 @@ const defaultDB: DB = {
       text: "Kırkağaç'ta yakıtım bitti, ne yapacağımı bilemedim. Kırkağaç yol yardım diye internette arama yaptım, Soma Ortaklar Yol Yardım'a ulaştım. Soma'dan Kırkağaç'a kadar geldiler, yakıt ikmali yaptılar. Kırkağaç çekici ve yol yardım için bu firmayı rahatlıkla önerebilirim.",
       rating: 5,
       initial: "NO"
+    },
+    {
+      id: 7,
+      name: "İbrahim Yalçın",
+      location: "Manisa, Merkez",
+      date: "3 hafta önce · Google yorumu",
+      text: "Manisa'da oto çekici ihtiyacım oldu, birkaç yeri aradım hepsi meşguldü. Soma Ortaklar'ı aradım, Manisa merkeze 25 dakikada geldiler. Manisa oto çekici hizmeti bu kadar profesyonel olabilir. Aracımı sorunsuz servise teslim ettiler, kesinlikle tavsiye ediyorum.",
+      rating: 5,
+      initial: "İY"
+    },
+    {
+      id: 8,
+      name: "Ali Kahraman",
+      location: "Kırkağaç, Manisa",
+      date: "1 ay önce · Google yorumu",
+      text: "Kırkağaç'ta aracım yolda kaldı, oto kurtarıcı gerekiyordu. Kırkağaç oto kurtarıcı diye aratınca Soma Ortaklar çıktı. Aradım, hemen yola çıktılar. Aracımı hasarsız kurtardılar. Oto kurtarıcı ve araç kurtarma hizmeti için güvenle arayabilirsiniz.",
+      rating: 5,
+      initial: "AK"
     }
   ],
   contact: {
@@ -155,8 +173,8 @@ const defaultDB: DB = {
     description: "Soma'nın en güvenilir oto çekici ve yol yardım firmasıyız",
     subtitle: "Biz Kimiz?",
     content: {
-      intro: "Soma Ortaklar Yol Yardım olarak, Manisa'nın Soma ilçesinde kurulu profesyonel oto çekici ve yol yardım firmasıyız. Soma çekici, Soma oto çekici ve Soma yol yardım hizmetlerinde bölgenin en güvenilir ismi olarak yıllardır araç sahiplerinin yanında oluyoruz. En zor anlarda, en hızlı çözümü sunmak için 7 gün 24 saat yoldayız.",
-      serviceArea: "Soma merkezli çekici hizmetimizle Manisa'nın tüm ilçelerini kapsayan geniş bir hizmet ağına sahibiz. Soma, Ahmetli, Akhisar, Alaşehir, Demirci, Gölmarmara, Gördes, Kınık, Kırkağaç, Köprübaşı, Salihli, Sarıgöl, Saruhanlı, Şehzadeler, Turgutlu, Yunusemre ve Savaştepe genelinde profesyonel çekici ekiplerimiz her an hizmete hazır beklemektedir.",
+      intro: "Soma Ortaklar Yol Yardım olarak 10 yılı aşkın süredir Soma, Akhisar, Kırkağaç, Savaştepe ve Manisa genelinde Soma çekici, Soma oto çekici, Soma yol yardım ve Soma oto kurtarıcı hizmetleri sunuyoruz. Bölgemizde oto çekici ve araç kurtarma denildiğinde akla gelen ilk firma olarak, profesyonel ekibimiz ve modern çekici araç filomuzla 7/24 yoldayız. Soma oto çekici hizmetimizle arıza, kaza veya herhangi bir nedenle yolda kalan aracınıza en kısa sürede ulaşıyor, hasarsız taşıma garantisiyle istediğiniz noktaya güvenle taşıyoruz.",
+      serviceArea: "Soma merkezli çekici hizmetimizle Manisa'nın tüm ilçelerini kapsayan geniş bir hizmet ağına sahibiz. Soma çekici, Akhisar oto çekici, Kırkağaç çekici, Savaştepe oto çekici ve Manisa çekici hizmetlerimizle bölgenin her noktasında 7/24 hazırız. Soma, Ahmetli, Akhisar, Alaşehir, Demirci, Gölmarmara, Gördes, Kınık, Kırkağaç, Köprübaşı, Salihli, Sarıgöl, Saruhanlı, Şehzadeler, Turgutlu, Yunusemre ve Savaştepe genelinde oto çekici, oto kurtarıcı ve yol yardım ekiplerimiz her an hizmete hazır beklemektedir.",
       whyChooseUs: [
         "7/24 Soma Çekici Hizmeti: Gece gündüz, hafta sonu ve resmi tatillerde ekibimiz her an yolda.",
         "Geniş Hizmet Ağı: Soma ve Manisa ilçelerinin tamamına ortalama 20–30 dakika içinde ulaşım.",
@@ -165,7 +183,7 @@ const defaultDB: DB = {
         "Modern Çekici Araç Filosu: Her türlü kara taşıtına uygun, son teknoloji çekici araçlar.",
         "Hasarsız Taşıma Garantisi: Aracınız bize teslim edildiği gibi teslim edilir."
       ],
-      closing: "Soma çekici, Soma oto çekici, araç kurtarma, lastik değişimi, akü takviyesi veya yol yardım hizmetlerine ihtiyaç duyduğunuz her an Soma Ortaklar Yol Yardım olarak hemen yanınızdayız. Soma ve Manisa genelinde oto çekici denildiğinde akla gelen ilk isim olmaktan gurur duyuyoruz."
+      closing: "Soma çekici, Soma oto çekici, Soma yol yardım, Soma oto kurtarıcı, Akhisar çekici, Kırkağaç çekici, Savaştepe çekici, Manisa çekici, araç kurtarma, lastik değişimi, akü takviyesi veya yol yardım hizmetlerine ihtiyaç duyduğunuz her an Soma Ortaklar Yol Yardım olarak hemen yanınızdayız. Soma, Akhisar, Kırkağaç, Savaştepe ve Manisa genelinde oto çekici ve oto kurtarıcı denildiğinde akla gelen ilk isim olmaktan gurur duyuyoruz."
     }
   },
   sliders: [
